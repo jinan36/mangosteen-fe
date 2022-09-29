@@ -10,14 +10,14 @@ export const First = defineComponent({
           flex="~ grow col"
           bg="$welcome-card-bg"
           rd-8px
-          p-16px
-          m="x-16px t-16px"
+          p16px
+          m="x16px t16px"
           justify-center
           items-center
           text-center
         >
           <img src={pig} />
-          <h2 mt-40px>
+          <h2 mt40px>
             会挣钱
             <br />
             还要会省钱
@@ -27,9 +27,9 @@ export const First = defineComponent({
           flex
           justify-between
           items-center
-          mx-16px
+          mx16px
           text-32px
-          py-24px
+          py24px
           c="$welcome-text"
         >
           <RouterLink invisible to="/start">
