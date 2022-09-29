@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@vitejs/plugin-vue': 3.1.0
+  pnpm: 7.12.2
   typescript: 4.8.4
   vite: 3.1.4
   vue: 3.2.40
@@ -12,6 +13,7 @@ dependencies:
 
 devDependencies:
   '@vitejs/plugin-vue': 3.1.0_vite@3.1.4+vue@3.2.40
+  pnpm: 7.12.2
   typescript: 4.8.4
   vite: 3.1.4
   vue-tsc: 0.40.13_typescript@4.8.4
@@ -455,6 +457,12 @@ packages:
 
   /picocolors/1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
+
+  /pnpm/7.12.2:
+    resolution: {integrity: sha512-8QvnKANKN+YZXDmVYGI7zRJysdKldZI+w3AYnxu9IwtnLv1x6WuzrJr0nxMcTeuUAT908RjDqK+/6KJB9wNqxA==}
+    engines: {node: '>=14.6'}
+    hasBin: true
+    dev: true
 
   /postcss/8.4.16:
     resolution: {integrity: sha512-ipHE1XBvKzm5xI7hiHCZJCSugxvsdq2mPnsq5+UF+VHCjiBvtDrlxJfMBToWaP9D5XlgNmcFGqoHmUn0EYEaRQ==}
