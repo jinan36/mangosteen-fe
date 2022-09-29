@@ -5,7 +5,7 @@ import pig from "../../assets/icons/pig.svg";
 export const First = defineComponent({
   setup() {
     return () => (
-      <div flex="~ col grow">
+      <div flex="~ col grow" pb="$welcome-nav-gap">
         <div
           flex="~ grow col"
           bg="$welcome-card-bg"
@@ -24,13 +24,20 @@ export const First = defineComponent({
           </h2>
         </div>
         <div
+          fixed
+          z="$z-index-bottom-nav"
+          bg="$welcome-bg-end"
+          left-0
+          bottom-0
+          w-full
           flex
           justify-between
           items-center
-          mx16px
-          text-32px
-          py24px
+          text-24px
+          h="$welcome-nav-height"
+          px16px
           c="$welcome-text"
+          pb="$welcome-nav-gap"
         >
           <RouterLink invisible to="/start">
             跳过

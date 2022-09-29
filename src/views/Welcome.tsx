@@ -5,7 +5,14 @@ import logo from "../assets/icons/mangosteen.svg";
 export const Welcome = defineComponent({
   setup() {
     return () => (
-      <div h-100vh flex="~ col" bg-gradient-to-b from-hex-5d33be to-hex-8f4cd7>
+      <div
+        h="[calc(100vh-var(--welcome-nav-height))]"
+        flex="~ col"
+        bg-gradient-to-b
+        from="$welcome-bg-start"
+        to="$welcome-bg-end"
+        mb="$welcome-nav-height"
+      >
         <header
           flex="~ shrink-0 col"
           justify-center
