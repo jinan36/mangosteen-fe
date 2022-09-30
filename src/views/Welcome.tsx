@@ -1,10 +1,11 @@
-import { defineComponent, Transition, VNode } from "vue";
+import { defineComponent, ref, Transition, VNode, watchEffect } from "vue";
 import {
   onBeforeRouteUpdate,
   RouteLocationNormalizedLoaded,
   RouterView,
 } from "vue-router";
 import s from "./Welcome.module.scss";
+import { useSwipe } from "@vueuse/core";
 
 export const Welcome = defineComponent({
   setup() {
@@ -24,6 +25,12 @@ export const Welcome = defineComponent({
           ? s.slide_fade_forward_leave_to
           : s.slide_fade_back_leave_to;
       }
+    });
+
+    const main = ref(null);
+    const { isSwiping, direction } = useSwipe(main);
+    watchEffect(() => {
+      console.log(isSwiping.value, direction.value);
     });
 
     return () => (
@@ -47,7 +54,12 @@ export const Welcome = defineComponent({
           </svg>
           <h1>山竹记账</h1>
         </header>
-        <main flex="~ grow col" relative m="x16px t16px b$welcome-nav-gap">
+        <main
+          ref={main}
+          flex="~ grow col"
+          relative
+          m="x16px t16px b$welcome-nav-gap"
+        >
           <RouterView name="main">
             {({
               Component: X,
