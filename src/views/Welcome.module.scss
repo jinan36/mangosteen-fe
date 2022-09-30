@@ -8,9 +8,16 @@
   transition: all 0.5s ease-out;
 }
 
-.slide_fade_enter_from {
+.slide_fade_forward_enter_from {
   transform: translateX(100vw);
 }
-.slide_fade_leave_to {
+.slide_fade_forward_leave_to {
   transform: translateX(-100vw);
+}
+
+.slide_fade_back_enter_from {
+  transform: translateX(-100vw);
+}
+.slide_fade_back_leave_to {
+  transform: translateX(100vw);
 }

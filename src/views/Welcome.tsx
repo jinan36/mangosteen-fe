@@ -1,10 +1,32 @@
 import { defineComponent, Transition, VNode } from "vue";
-import { RouteLocationNormalizedLoaded, RouterView } from "vue-router";
+import {
+  onBeforeRouteUpdate,
+  RouteLocationNormalizedLoaded,
+  RouterView,
+} from "vue-router";
 import logo from "../assets/icons/mangosteen.svg";
 import s from "./Welcome.module.scss";
 
 export const Welcome = defineComponent({
   setup() {
+    let enterFromClass = $ref(s.slide_fade_forward_enter_from);
+    let leaveToClass = $ref(s.slide_fade_forward_leave_to);
+    onBeforeRouteUpdate((to, from) => {
+      const fromIndexS = from.path.match(/welcome\/(\d*)/)?.[1] ?? "";
+      const toIndexS = to.path.match(/welcome\/(\d*)/)?.[1] ?? "";
+
+      if (fromIndexS && toIndexS) {
+        const isForward =
+          Number.parseInt(toIndexS, 10) > Number.parseInt(fromIndexS, 10);
+        enterFromClass = isForward
+          ? s.slide_fade_forward_enter_from
+          : s.slide_fade_back_enter_from;
+        leaveToClass = isForward
+          ? s.slide_fade_forward_leave_to
+          : s.slide_fade_back_leave_to;
+      }
+    });
+
     return () => (
       <div
         h="[calc(100vh-var(--welcome-nav-height))]"
@@ -34,9 +56,9 @@ export const Welcome = defineComponent({
               route: RouteLocationNormalizedLoaded;
             }) => (
               <Transition
-                enterFromClass={s.slide_fade_enter_from}
+                enterFromClass={enterFromClass}
                 enterActiveClass={s.slide_fade_enter_active}
-                leaveToClass={s.slide_fade_leave_to}
+                leaveToClass={leaveToClass}
                 leaveActiveClass={s.slide_fade_leave_active}
               >
                 {X}
