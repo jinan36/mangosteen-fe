@@ -4,7 +4,6 @@ import {
   RouteLocationNormalizedLoaded,
   RouterView,
 } from "vue-router";
-import logo from "../assets/icons/mangosteen.svg";
 import s from "./Welcome.module.scss";
 
 export const Welcome = defineComponent({
