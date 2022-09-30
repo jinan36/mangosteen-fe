@@ -43,7 +43,9 @@ export const Welcome = defineComponent({
           pt66px
           c-hex-d4d4ee
         >
-          <img src={logo} alt="logo" />
+          <svg w-64px h-69px>
+            <use xlinkHref="#mangosteen"></use>
+          </svg>
           <h1>山竹记账</h1>
         </header>
         <main flex="~ grow col" relative m="x16px t16px b$welcome-nav-gap">

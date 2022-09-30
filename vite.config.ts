@@ -7,6 +7,7 @@ import {
   presetAttributify,
   transformerAttributifyJsx,
 } from "unocss";
+import svgstore from "./src/plugins/vite/svgstore";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -19,5 +20,6 @@ export default defineConfig({
       presets: [presetUno(), presetAttributify()],
       transformers: [transformerAttributifyJsx()],
     }),
+    svgstore(),
   ],
 });
