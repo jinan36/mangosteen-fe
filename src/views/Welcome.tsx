@@ -1,11 +1,25 @@
-import { defineComponent, ref, Transition, VNode, watchEffect } from "vue";
+import { defineComponent, ref, Transition, VNode } from "vue";
 import {
   onBeforeRouteUpdate,
   RouteLocationNormalizedLoaded,
   RouterView,
+  useRoute,
+  useRouter,
 } from "vue-router";
 import s from "./Welcome.module.scss";
 import { useSwipe } from "@vueuse/core";
+
+const forwardMap: Record<string, string> = {
+  Welcome1: "/welcome/2",
+  Welcome2: "/welcome/3",
+  Welcome3: "/welcome/4",
+  Welcome4: "/start",
+};
+const backMap: Record<string, string> = {
+  Welcome2: "/welcome/1",
+  Welcome3: "/welcome/2",
+  Welcome4: "/welcome/3",
+};
 
 export const Welcome = defineComponent({
   setup() {
@@ -28,9 +42,19 @@ export const Welcome = defineComponent({
     });
 
     const main = ref(null);
-    const { isSwiping, direction } = useSwipe(main);
-    watchEffect(() => {
-      console.log(isSwiping.value, direction.value);
+    const route = useRoute();
+    const router = useRouter();
+    useSwipe(main, {
+      passive: false,
+      onSwipeEnd(_, direction) {
+        if (direction === "LEFT") {
+          const name = (route.name || "Welcome1").toString();
+          router.replace(forwardMap[name]);
+        } else {
+          const name = (route.name || "Welcome2").toString();
+          router.replace(backMap[name]);
+        }
+      },
     });
 
     return () => (
