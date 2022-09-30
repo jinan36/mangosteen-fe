@@ -10,7 +10,9 @@ export const SecondActions = defineComponent({
           跳过
         </RouterLink>
         <RouterLink to="/welcome/3">下一页</RouterLink>
-        <RouterLink to="/start">跳过</RouterLink>
+        <RouterLink to="/start" replace>
+          跳过
+        </RouterLink>
       </Actions>
     );
   },
