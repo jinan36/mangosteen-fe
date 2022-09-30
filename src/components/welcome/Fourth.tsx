@@ -1,12 +1,12 @@
 import { defineComponent } from "vue";
-import chart from "../../assets/icons/chart.svg";
+import cloud from "../../assets/icons/cloud.svg";
 import { Card } from "./Card";
 
-export const Third = defineComponent({
+export const Fourth = defineComponent({
   setup() {
     return () => (
       <Card>
-        <img src={chart} />
+        <img src={cloud} />
         <h2 mt40px>
           每日提醒
           <br />
