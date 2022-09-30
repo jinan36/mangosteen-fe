@@ -13,7 +13,6 @@ const forwardMap: Record<string, string> = {
   Welcome1: "/welcome/2",
   Welcome2: "/welcome/3",
   Welcome3: "/welcome/4",
-  Welcome4: "/start",
 };
 const backMap: Record<string, string> = {
   Welcome2: "/welcome/1",
@@ -48,7 +47,7 @@ export const Welcome = defineComponent({
       passive: false,
       onSwipeEnd(_, direction) {
         if (direction === "LEFT") {
-          const name = (route.name || "Welcome1").toString();
+          const name = (route.name || "Welcome3").toString();
           router.replace(forwardMap[name]);
         } else {
           const name = (route.name || "Welcome2").toString();
