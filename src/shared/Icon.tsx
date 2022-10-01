@@ -14,7 +14,7 @@ export const Icon = defineComponent({
   },
   setup(props) {
     return () => (
-      <svg w="1.2em" h="1.2em">
+      <svg class="w-1.2em h-1.2em">
         <use xlinkHref={"#" + props.name} />
       </svg>
     );
