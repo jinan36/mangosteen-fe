@@ -3,6 +3,7 @@ import { Button } from "../shared/Button";
 import { Center } from "../shared/Center";
 import { FloatButton } from "../shared/FloatButton";
 import { Icon } from "../shared/Icon";
+import { Navbar } from "../shared/Navbar";
 
 export const StartPage = defineComponent({
   setup() {
@@ -11,13 +12,18 @@ export const StartPage = defineComponent({
     };
     return () => (
       <div>
-        <nav>menu</nav>
-        <Center py160px>
+        <Navbar>
+          {{
+            default: "山竹记账",
+            icon: <Icon w-30px h-30px relative top-2px name="menu"></Icon>,
+          }}
+        </Navbar>
+        <Center py120px>
           <Icon name="pig" w-128px h-128px />
         </Center>
         <div p-16px>
           <Button w-full onClick={onClick}>
-            测试
+            开始记账
           </Button>
         </div>
         <FloatButton iconName="add" />
