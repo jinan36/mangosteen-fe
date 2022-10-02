@@ -7,7 +7,10 @@ export type IconNames =
   | "cloud"
   | "mangosteen"
   | "pig"
-  | "menu";
+  | "menu"
+  | "charts"
+  | "notify"
+  | "export";
 
 export const Icon = defineComponent({
   props: {
