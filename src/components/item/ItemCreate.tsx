@@ -2,16 +2,23 @@ import { defineComponent } from "vue";
 import { useRouter } from "vue-router";
 import { MainLayout } from "../../layouts/MainLayout";
 import { Icon } from "../../shared/Icon";
+import { Tab, Tabs } from "../../shared/Tabs";
 
 export const ItemCreate = defineComponent({
-  setup(props, context) {
+  setup() {
     const router = useRouter();
+    let kind = $ref("支出");
     return () => (
       <MainLayout>
         {{
           title: () => "记一笔",
           icon: () => <Icon name="left" onClick={() => router.back()}></Icon>,
-          default: () => <div>main</div>,
+          default: () => (
+            <Tabs v-model:selected={kind}>
+              <Tab name="支出">支出内容</Tab>
+              <Tab name="收入">收入内容</Tab>
+            </Tabs>
+          ),
         }}
       </MainLayout>
     );
