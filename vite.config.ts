@@ -19,6 +19,15 @@ export default defineConfig({
     Unocss({
       presets: [presetUno(), presetAttributify()],
       transformers: [transformerAttributifyJsx()],
+      rules: [
+        [
+          /^flex-([a-z]+)-([a-z]+)$/,
+          (match) => ({
+            "justify-content": match[1],
+            "align-items": match[2],
+          }),
+        ],
+      ],
     }),
     svgstore(),
   ],

@@ -1,5 +1,7 @@
 import { defineComponent, PropType } from "vue";
-import { Icon } from "./Icon";
+import { RouterLink } from "vue-router";
+import { Icon } from "../Icon";
+import { OverlayAction } from "./Action";
 
 export const Overlay = defineComponent({
   props: {
@@ -10,6 +12,9 @@ export const Overlay = defineComponent({
   setup(props, context) {
     const onClose = () => {
       props.onClose?.();
+    };
+    const onClickSignIn = () => {
+      console.log("sign in");
     };
     return () => (
       <>
@@ -32,23 +37,34 @@ export const Overlay = defineComponent({
           w="16em"
           h="[calc(100%-var(--top-safe-area-height))]"
         >
-          <section>
+          <section
+            p="y32px x16px"
+            bg="$overlay-user-bg"
+            text="$overlay-user-text"
+            onClick={onClickSignIn}
+          >
             <h2>未登录用户</h2>
             <p>点击这里登录</p>
           </section>
           <nav>
-            <ul>
+            <ul p="t16px" text="20px" m="svg:r12px">
               <li>
-                <Icon name="charts" />
-                <span>统计图表</span>
+                {/* to="/statistics" */}
+                <OverlayAction to="#" iconName="charts">
+                  统计图表
+                </OverlayAction>
               </li>
               <li>
-                <Icon name="export" />
-                <span>导出数据</span>
+                {/* to="/export" */}
+                <OverlayAction to="#" iconName="export">
+                  导出数据
+                </OverlayAction>
               </li>
               <li>
-                <Icon name="notify" />
-                <span>记账提醒</span>
+                {/* to="/notify" */}
+                <OverlayAction to="#" iconName="notify">
+                  记账提醒
+                </OverlayAction>
               </li>
             </ul>
           </nav>
