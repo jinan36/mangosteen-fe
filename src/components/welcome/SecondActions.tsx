@@ -6,7 +6,7 @@ export const SecondActions = defineComponent({
   setup() {
     return () => (
       <Actions>
-        <RouterLink invisible to="/start">
+        <RouterLink invisible="~" to="/start">
           跳过
         </RouterLink>
         <RouterLink to="/welcome/3">下一页</RouterLink>

@@ -6,11 +6,11 @@ export const Card = defineComponent({
       <div
         flex="~ grow col"
         bg="$welcome-card-bg"
-        rd-8px
-        p16px
-        justify-center
-        items-center
-        text-center
+        rd="8px"
+        p="16px"
+        justify="center"
+        items="center"
+        text="center"
       >
         {slots.default?.()}
       </div>

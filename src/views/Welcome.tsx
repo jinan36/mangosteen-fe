@@ -60,19 +60,19 @@ export const Welcome = defineComponent({
       <div
         h="[calc(100vh-var(--welcome-nav-height))]"
         flex="~ col"
-        bg-gradient-to-b
+        bg="gradient-to-b"
         from="$welcome-bg-start"
         to="$welcome-bg-end"
         mb="$welcome-nav-height"
       >
         <header
           flex="~ shrink-0 col"
-          justify-center
-          items-center
-          pt66px
-          c-hex-d4d4ee
+          justify="center"
+          items="center"
+          p="t66px"
+          c="#d4d4ee"
         >
-          <svg w-64px h-69px>
+          <svg w="64px" h="69px">
             <use xlinkHref="#mangosteen"></use>
           </svg>
           <h1>山竹记账</h1>
@@ -80,7 +80,7 @@ export const Welcome = defineComponent({
         <main
           ref={main}
           flex="~ grow col"
-          relative
+          relative="~"
           m="x16px t16px b$welcome-nav-gap"
         >
           <RouterView name="main">
@@ -102,7 +102,7 @@ export const Welcome = defineComponent({
             )}
           </RouterView>
         </main>
-        <footer shrink-0>
+        <footer flex="shrink-0">
           <RouterView name="footer" />
         </footer>
       </div>

@@ -14,15 +14,17 @@ export const StartPage = defineComponent({
       <div>
         <Navbar>
           {{
-            default: "山竹记账",
-            icon: <Icon w-30px h-30px relative top-2px name="menu"></Icon>,
+            default: () => "山竹记账",
+            icon: () => (
+              <Icon w="30px" h="30px" relative="~" top="2px" name="menu"></Icon>
+            ),
           }}
         </Navbar>
-        <Center py120px>
-          <Icon name="pig" w-128px h-128px />
+        <Center p="y120px">
+          <Icon name="pig" w="128px" h="128px" />
         </Center>
-        <div p-16px>
-          <Button w-full onClick={onClick}>
+        <div p="16px">
+          <Button w="full" onClick={onClick}>
             开始记账
           </Button>
         </div>

@@ -6,13 +6,13 @@ export const FourthActions = defineComponent({
   setup() {
     return () => (
       <Actions>
-        <RouterLink invisible to="/start">
+        <RouterLink invisible="~" to="/start">
           跳过
         </RouterLink>
         <RouterLink to="/start" replace>
           完成
         </RouterLink>
-        <RouterLink invisible to="/start">
+        <RouterLink invisible="~" to="/start">
           跳过
         </RouterLink>
       </Actions>

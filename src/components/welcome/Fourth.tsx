@@ -8,7 +8,7 @@ export const Fourth = defineComponent({
         <svg>
           <use xlinkHref="#cloud"></use>
         </svg>
-        <h2 mt40px>
+        <h2 m="t40px">
           每日提醒
           <br />
           不遗漏每一笔账单

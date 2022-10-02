@@ -8,7 +8,7 @@ export const First = defineComponent({
         <svg>
           <use xlinkHref="#pig"></use>
         </svg>
-        <h2 mt40px>
+        <h2 m="t40px">
           会挣钱
           <br />
           还要会省钱

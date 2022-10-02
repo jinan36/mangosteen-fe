@@ -4,18 +4,18 @@ export const Actions = defineComponent({
   setup(_, { slots }) {
     return () => (
       <div
-        fixed
+        fixed="~"
         z="$z-index-bottom-nav"
+        left="0"
+        bottom="0"
         bg="$welcome-bg-end"
-        left-0
-        bottom-0
-        w-full
-        flex
-        justify-between
-        items-center
-        text-24px
+        w="full"
+        flex="~"
+        justify="between"
+        items="center"
+        text="24px"
         h="$welcome-nav-height"
-        px16px
+        p="x16px"
         c="$welcome-text"
         pb="$welcome-nav-gap"
       >

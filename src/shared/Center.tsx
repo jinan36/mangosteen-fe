@@ -15,15 +15,14 @@ export const Center = defineComponent({
     },
   },
   setup(props, context) {
-    const extraClass = $computed(() => directionMap[props.direction]);
+    const isHorizontal = $computed(
+      () => directionMap[props.direction] === "horizontal"
+    );
     return () => (
       <div
-        class={[
-          "flex",
-          " justify-center",
-          " items-center",
-          extraClass === "horizontal" ? "row" : "col",
-        ]}
+        flex={["~", isHorizontal ? "row" : "col"].join(" ")}
+        justify="center"
+        items="center"
       >
         {context.slots.default?.()}
       </div>
