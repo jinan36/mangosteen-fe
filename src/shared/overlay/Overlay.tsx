@@ -1,7 +1,5 @@
 import { defineComponent, PropType } from "vue";
-import { RouterLink } from "vue-router";
-import { Icon } from "../Icon";
-import { OverlayAction } from "./Action";
+import { OverlayAction } from "./OverlayAction";
 
 export const Overlay = defineComponent({
   props: {
