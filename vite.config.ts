@@ -19,13 +19,10 @@ export default defineConfig({
     Unocss({
       presets: [presetUno(), presetAttributify()],
       transformers: [transformerAttributifyJsx()],
-      rules: [
+      shortcuts: [
         [
-          /^flex-([a-z]+)-([a-z]+)$/,
-          (match) => ({
-            "justify-content": match[1],
-            "align-items": match[2],
-          }),
+          /^flex-(around|between|center|end|evenly|inherit|initial|revert|revert-layer|start|unset)-(baseline|center|end|inherit|initial|revert|revert-layer|start|stretch|unset)$/,
+          ([, c1, c2]) => `justify-${c1} items-${c2}`,
         ],
       ],
     }),
