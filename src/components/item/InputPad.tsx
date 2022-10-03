@@ -32,12 +32,13 @@ export const InputPad = defineComponent({
         </div>
         <div flex="~ wrap" border="t-1 $input-pad-button-border-color">
           {buttons.map((button, index) => {
-            const borderClass = `0 $input-pad-button-border-color${
-              (index + 1) % 4 === 0 ? " r-0" : " r-1"
-            }${index > 11 ? " b-0" : " b-1"}`;
+            const cls = `border-0 border-color-$input-pad-button-border-color ${
+              (index + 1) % 4 !== 0 ? "border-r" : ""
+            } ${index <= 11 ? "border-b" : ""}`;
+
             return (
               <button
-                border={borderClass}
+                class={cls}
                 w="1/4"
                 h="48px"
                 bg="transparent"
