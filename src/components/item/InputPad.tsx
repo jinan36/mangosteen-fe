@@ -23,12 +23,32 @@ export const InputPad = defineComponent({
     ];
     return () => (
       <>
-        <div>
-          <span>
-            <Icon name="date" />
-            <span>2022-01-01</span>
+        <div
+          flex="~ between-center"
+          p="16px"
+          font="mono"
+          border="t-1 t-$input-pad-button-border-color"
+        >
+          <span text="12px" flex="~ center-center" c="$date-text">
+            <Icon w="20px" h="20px" mr="8px" name="notes" />
+            <span>备注</span>
           </span>
-          <span>数字</span>
+          <span text="20px" c="$amount-text">
+            199.12
+          </span>
+        </div>
+        <div flex="~ between-center" p="x16px b16px t4px" font="mono">
+          <span
+            text="12px"
+            flex="~ center-center"
+            c="$date-text"
+            border="~ color-$input-pad-button-border-color rd-18px"
+            p="y6px l10px r12px"
+            bg="$input-pad-button-border-color"
+          >
+            <Icon w="20px" h="20px" mr="8px" name="date" />
+            <span>2022-10-6</span>
+          </span>
         </div>
         <div flex="~ wrap" border="t-1 $input-pad-button-border-color">
           {buttons.map((button, index) => {
