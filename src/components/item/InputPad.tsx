@@ -1,10 +1,26 @@
 import { defineComponent } from "vue";
 import { Icon } from "../../shared/Icon";
 import { time } from "../../shared/time";
+import { Popup, DatetimePicker } from "vant";
 
 export const InputPad = defineComponent({
-  setup(props, context) {
-    const now = new Date();
+  setup() {
+    const _now = new Date();
+    let now = $ref(_now);
+    let tempDate = $ref(_now);
+    let popVisible = $ref(false);
+    const showDatePicker = () => {
+      tempDate = now;
+      popVisible = true;
+    };
+    const hideDatePicker = () => {
+      popVisible = false;
+    };
+    const setDate = () => {
+      now = tempDate;
+      hideDatePicker();
+    };
+
     const buttons = [
       { text: "1", onClick: () => {} },
       { text: "2", onClick: () => {} },
@@ -49,7 +65,18 @@ export const InputPad = defineComponent({
             bg="$input-pad-button-border-color"
           >
             <Icon w="20px" h="20px" mr="8px" fill="$date-text" name="date" />
-            <span>{time(now).format()}</span>
+            <span>
+              <span onClick={showDatePicker}>{time(now).format()}</span>
+              <Popup position="bottom" v-model:show={popVisible}>
+                <DatetimePicker
+                  v-model={tempDate}
+                  type="date"
+                  title="请选择年月日"
+                  onConfirm={setDate}
+                  onCancel={hideDatePicker}
+                />
+              </Popup>
+            </span>
           </span>
         </div>
         <div flex="~ wrap" border="t-1 $input-pad-button-border-color">
@@ -57,7 +84,6 @@ export const InputPad = defineComponent({
             const cls = `border-0 border-color-$input-pad-button-border-color ${
               (index + 1) % 4 !== 0 ? "border-r" : ""
             } ${index <= 11 ? "border-b" : ""}`;
-
             return (
               <button
                 class={cls}

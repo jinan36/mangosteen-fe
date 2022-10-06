@@ -8,6 +8,7 @@ import {
   transformerAttributifyJsx,
 } from "unocss";
 import svgstore from "./src/plugins/vite/svgstore";
+import { createStyleImportPlugin, VantResolve } from "vite-plugin-style-import";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -27,5 +28,14 @@ export default defineConfig({
       ],
     }),
     svgstore(),
+    createStyleImportPlugin({
+      libs: [
+        {
+          libraryName: "vant",
+          esModule: true,
+          resolveStyle: (name) => `../es/${name}/style`,
+        },
+      ],
+    }),
   ],
 });
