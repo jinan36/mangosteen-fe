@@ -32,7 +32,7 @@ export const InputPad = defineComponent({
           border="t-1 t-$input-pad-button-border-color"
         >
           <span text="12px" flex="~ center-center" c="$date-text">
-            <Icon w="20px" h="20px" mr="8px" name="notes" />
+            <Icon w="20px" h="20px" mr="8px" fill="" name="notes" />
             <span>备注</span>
           </span>
           <span text="20px" c="$amount-text">
@@ -48,10 +48,8 @@ export const InputPad = defineComponent({
             p="y6px l10px r12px"
             bg="$input-pad-button-border-color"
           >
-            <Icon w="20px" h="20px" mr="8px" name="date" />
-            <span>
-              <input type="date" value={time(now).format()} />
-            </span>
+            <Icon w="20px" h="20px" mr="8px" fill="$date-text" name="date" />
+            <span>{time(now).format()}</span>
           </span>
         </div>
         <div flex="~ wrap" border="t-1 $input-pad-button-border-color">
