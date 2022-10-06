@@ -12,8 +12,9 @@ export type IconNames =
   | "notify"
   | "export"
   | "left"
-  | "notes"
-  | "date";
+  | "date"
+  | "backspace"
+  | "brush";
 
 export const Icon = defineComponent({
   props: {

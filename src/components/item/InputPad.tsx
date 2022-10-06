@@ -25,7 +25,10 @@ export const InputPad = defineComponent({
       { text: "1", onClick: () => {} },
       { text: "2", onClick: () => {} },
       { text: "3", onClick: () => {} },
-      { text: "删除", onClick: () => {} },
+      {
+        text: () => <Icon w="24px" h="24px" fill="#333" name="backspace" />,
+        onClick: () => {},
+      },
       { text: "4", onClick: () => {} },
       { text: "5", onClick: () => {} },
       { text: "6", onClick: () => {} },
@@ -48,10 +51,16 @@ export const InputPad = defineComponent({
           border="t-1 t-$input-pad-button-border-color"
         >
           <span text="12px" flex="~ center-center" c="$date-text">
-            <Icon w="20px" h="20px" mr="8px" fill="" name="notes" />
-            <span>备注</span>
+            <Icon
+              w="20px"
+              h="20px"
+              mr="4px"
+              fill="$input-pad-date-text"
+              name="brush"
+            />
+            <span c="#999/500">备注</span>
           </span>
-          <span text="20px" c="$amount-text">
+          <span text="20px" c="$input-pad-amount-text">
             199.12
           </span>
         </div>
@@ -59,12 +68,18 @@ export const InputPad = defineComponent({
           <span
             text="12px"
             flex="~ center-center"
-            c="$date-text"
+            c="$input-pad-date-text"
             border="~ color-$input-pad-button-border-color rd-18px"
             p="y6px l10px r12px"
             bg="$input-pad-button-border-color"
           >
-            <Icon w="20px" h="20px" mr="8px" fill="$date-text" name="date" />
+            <Icon
+              w="20px"
+              h="20px"
+              mr="8px"
+              fill="$input-pad-date-text"
+              name="date"
+            />
             <span>
               <span onClick={showDatePicker}>{time(now).format()}</span>
               <Popup position="bottom" v-model:show={popVisible}>
@@ -79,20 +94,29 @@ export const InputPad = defineComponent({
             </span>
           </span>
         </div>
-        <div flex="~ wrap" border="t-1 $input-pad-button-border-color">
+        <div
+          grid="~ cols-4"
+          auto="rows-48px cols-fr"
+          gap="1px"
+          border="t-1 $input-pad-button-border-color"
+          bg="$input-pad-button-border-color"
+        >
           {buttons.map((button, index) => {
-            const cls = `border-0 border-color-$input-pad-button-border-color ${
-              (index + 1) % 4 !== 0 ? "border-r" : ""
-            } ${index <= 11 ? "border-b" : ""}`;
+            const cls =
+              index === 15
+                ? "bg-$input-pad-button-bg-important! c-$input-pad-button-text-important!"
+                : "";
             return (
               <button
                 class={cls}
-                w="1/4"
-                h="48px"
-                bg="transparent"
+                border="none"
+                bg="$input-pad-button-bg"
+                flex="~ center-center"
                 onClick={button.onClick}
               >
-                {button.text}
+                {typeof button.text === "function"
+                  ? button.text()
+                  : button.text}
               </button>
             );
           })}
