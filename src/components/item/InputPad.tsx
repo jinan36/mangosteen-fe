@@ -1,8 +1,10 @@
 import { defineComponent } from "vue";
 import { Icon } from "../../shared/Icon";
+import { time } from "../../shared/time";
 
 export const InputPad = defineComponent({
   setup(props, context) {
+    const now = new Date();
     const buttons = [
       { text: "1", onClick: () => {} },
       { text: "2", onClick: () => {} },
@@ -47,7 +49,9 @@ export const InputPad = defineComponent({
             bg="$input-pad-button-border-color"
           >
             <Icon w="20px" h="20px" mr="8px" name="date" />
-            <span>2022-10-6</span>
+            <span>
+              <input type="date" value={time(now).format()} />
+            </span>
           </span>
         </div>
         <div flex="~ wrap" border="t-1 $input-pad-button-border-color">
