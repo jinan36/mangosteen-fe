@@ -2,6 +2,7 @@ import { defineComponent } from "vue";
 import { Icon } from "../../shared/Icon";
 import { time } from "../../shared/time";
 import { Popup, DatetimePicker } from "vant";
+import { useInputPad } from "../../hooks/useInputPad";
 
 export const InputPad = defineComponent({
   setup() {
@@ -21,25 +22,93 @@ export const InputPad = defineComponent({
       hideDatePicker();
     };
 
+    const { amount, appendText, backspace } = useInputPad();
     const buttons = [
-      { text: "1", onClick: () => {} },
-      { text: "2", onClick: () => {} },
-      { text: "3", onClick: () => {} },
+      {
+        text: "1",
+        onClick: () => {
+          appendText(1);
+        },
+      },
+      {
+        text: "2",
+        onClick: () => {
+          appendText(2);
+        },
+      },
+      {
+        text: "3",
+        onClick: () => {
+          appendText(3);
+        },
+      },
       {
         text: () => <Icon w="24px" h="24px" fill="#333" name="backspace" />,
-        onClick: () => {},
+        onClick: () => {
+          backspace();
+        },
       },
-      { text: "4", onClick: () => {} },
-      { text: "5", onClick: () => {} },
-      { text: "6", onClick: () => {} },
-      { text: "+", onClick: () => {} },
-      { text: "7", onClick: () => {} },
-      { text: "8", onClick: () => {} },
-      { text: "9", onClick: () => {} },
-      { text: "-", onClick: () => {} },
+      {
+        text: "4",
+        onClick: () => {
+          appendText(4);
+        },
+      },
+      {
+        text: "5",
+        onClick: () => {
+          appendText(5);
+        },
+      },
+      {
+        text: "6",
+        onClick: () => {
+          appendText(6);
+        },
+      },
+      {
+        text: "+",
+        onClick: () => {
+          appendText("+");
+        },
+      },
+      {
+        text: "7",
+        onClick: () => {
+          appendText(7);
+        },
+      },
+      {
+        text: "8",
+        onClick: () => {
+          appendText(8);
+        },
+      },
+      {
+        text: "9",
+        onClick: () => {
+          appendText(9);
+        },
+      },
+      {
+        text: "-",
+        onClick: () => {
+          appendText("-");
+        },
+      },
       { text: "再记", onClick: () => {} },
-      { text: "0", onClick: () => {} },
-      { text: ".", onClick: () => {} },
+      {
+        text: "0",
+        onClick: () => {
+          appendText(0);
+        },
+      },
+      {
+        text: ".",
+        onClick: () => {
+          appendText(".");
+        },
+      },
       { text: "保存", onClick: () => {} },
     ];
     return () => (
@@ -61,7 +130,7 @@ export const InputPad = defineComponent({
             <span c="#999/500">备注</span>
           </span>
           <span text="20px" c="$input-pad-amount-text">
-            199.12
+            {amount.value}
           </span>
         </div>
         <div flex="~ between-center" p="x16px b16px t4px" font="mono">

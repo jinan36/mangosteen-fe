@@ -5,6 +5,7 @@ specifiers:
   '@vitejs/plugin-vue': 3.1.0
   '@vitejs/plugin-vue-jsx': 2.0.1
   '@vueuse/core': 9.3.0
+  number-precision: 1.5.2
   pnpm: 7.12.2
   sass: 1.55.0
   svgo: 2.8.0
@@ -20,6 +21,7 @@ specifiers:
 
 dependencies:
   '@vueuse/core': 9.3.0_vue@3.2.40
+  number-precision: 1.5.2
   vant: 3.6.3_vue@3.2.40
   vue: 3.2.40
   vue-router: 4.1.5_vue@3.2.40
@@ -1685,6 +1687,10 @@ packages:
     dependencies:
       boolbase: 1.0.0
     dev: true
+
+  /number-precision/1.5.2:
+    resolution: {integrity: sha512-q7C1ZW3FyjsJ+IpGB6ykX8OWWa5+6M+hEY0zXBlzq1Sq1IPY9GeI3CQ9b2i6CMIYoeSuFhop2Av/OhCxClXqag==}
+    dev: false
 
   /ohmyfetch/0.4.19:
     resolution: {integrity: sha512-OH2xVeRPNsHkx+JFdq1ewe9EwVDfTrv6lsBHpIx8wIWXowP5FyLhhYVaXIVlPsW542rt7gmwK14FwIDWUXEO+Q==}
