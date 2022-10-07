@@ -3836,6 +3836,19 @@ export const emojiList1 = [
   ],
 ];
 
+const allGroups = [
+  ["😀", "smileys-emotion"],
+  ["👋", "people-body"],
+  ["🦰", "component"],
+  ["🐱", "animals-nature"],
+  ["🍎", "food-drink"],
+  ["🏠️", "travel-places"],
+  ["⚽", "activities"],
+  ["📝", "objects"],
+  ["⛔️", "symbols"],
+  ["🏁", "flags"],
+];
+
 export const FONT_FAMILY =
   '"Twemoji Mozilla","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",' +
   '"Noto Color Emoji","EmojiOne Color","Android Emoji",sans-serif';
