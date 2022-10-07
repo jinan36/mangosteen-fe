@@ -6,9 +6,10 @@ import {
   presetUno,
   presetAttributify,
   transformerAttributifyJsx,
+  toEscapedSelector as e,
 } from "unocss";
 import svgstore from "./src/plugins/vite/svgstore";
-import { createStyleImportPlugin, VantResolve } from "vite-plugin-style-import";
+import { createStyleImportPlugin } from "vite-plugin-style-import";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -20,12 +21,51 @@ export default defineConfig({
     Unocss({
       presets: [presetUno(), presetAttributify()],
       transformers: [transformerAttributifyJsx()],
+      rules: [
+        [
+          /^custom-(.+)$/,
+          (
+            [, name],
+            { rawSelector, currentSelector, variantHandlers, theme }
+          ) => {
+            // discard mismatched rules
+            if (!name.includes("scroll-hide")) return;
+
+            // if you want, you can disable the variants for this rule
+            // if (variantHandlers.length) return;
+            const selector = e(rawSelector);
+            // return a string instead of an object
+            return `
+            ${selector}::-webkit-scrollbar {
+              display: none;
+            }
+            `;
+          },
+        ],
+      ],
       shortcuts: [
         [
           /^flex-(around|between|center|end|evenly|inherit|initial|revert|revert-layer|start|unset)-(baseline|center|end|inherit|initial|revert|revert-layer|start|stretch|unset)$/,
           ([, c1, c2]) => `justify-${c1} items-${c2}`,
         ],
       ],
+      theme: {
+        boxShadow: {
+          formInputInner: "inset 0 0 3px var(--input-shadow)",
+        },
+        fontFamily: {
+          emoji: [
+            '"Twemoji Mozilla"',
+            '"Apple Color Emoji"',
+            '"Segoe UI Emoji"',
+            '"Segoe UI Symbol"',
+            '"Noto Color Emoji"',
+            '"EmojiOne Color"',
+            '"Android Emoji"',
+            "sans-serif",
+          ],
+        },
+      },
     }),
     svgstore(),
     createStyleImportPlugin({

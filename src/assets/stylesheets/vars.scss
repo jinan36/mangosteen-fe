@@ -30,10 +30,19 @@
 
   --tabs-indicator-bg: rgba(255, 255, 255, 0.5);
 
+  // input-pad
   --input-pad-button-border-color: #ddd;
   --input-pad-amount-text: #53a867;
   --input-pad-date-text: #333;
   --input-pad-button-bg: white;
   --input-pad-button-bg-important: #5c33be;
   --input-pad-button-text-important: white;
+
+  // tag-form
+  --input-min-height: 48px;
+  --input-border-color: #5c33be;
+  --input-radius: var(--button-radius);
+  --input-shadow: rgba(0, 0, 0, 0.25);
+  --error-color: #e10505;
+  --emoji-nav-emoji-selected: #385ac1;
 }
