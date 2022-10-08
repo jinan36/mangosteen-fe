@@ -18,7 +18,7 @@ export const TagCreate = defineComponent({
       { key: 'sign', type: 'required', message: '必填' },
     ]
     const { errors, validate } = useValidate<typeof formData>(formData, rules)
-    const onSumit = (e: Event) => {
+    const onSubmit = (e: Event) => {
       e.preventDefault()
       validate()
     }
@@ -70,7 +70,7 @@ export const TagCreate = defineComponent({
               </p>
               <div mt="8px">
                 <div flex="~" mt="4px">
-                  <Button min-h="$input-min-height" max-w="full" w="full" onClick={onSumit}>
+                  <Button min-h="$input-min-height" max-w="full" w="full" onClick={onSubmit}>
                     确定
                   </Button>
                 </div>
