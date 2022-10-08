@@ -30,14 +30,14 @@ export const useValidate = <T extends FData>(formData: T, rules: Rules<T>) => {
       const value = formData[key]
       switch (type) {
         case 'required':
-          if (value === null || value === undefined || value === '') {
+          if (isEmpty(value)) {
             if (!errors.value[key])
               errors.value[key] = []
             errors.value[key].push(message)
           }
           break
         case 'pattern':
-          if (value && !rule.regex.test(value.toString())) {
+          if (!isEmpty && !rule.regex.test(value!.toString())) {
             errors.value[key] = errors.value[key] ?? []
             errors.value[key]?.push(message)
           }
@@ -51,4 +51,8 @@ export const useValidate = <T extends FData>(formData: T, rules: Rules<T>) => {
     validate,
     errors,
   }
+}
+
+function isEmpty(value: null | undefined | string | number | FData) {
+  return value === null || value === undefined || value === ''
 }
