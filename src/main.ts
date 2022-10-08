@@ -5,7 +5,7 @@ import { routes } from './config/routes'
 import { history } from './shared/history'
 
 import 'uno.css'
-import '@svgstore'
+import 'svg.store'
 
 const router = createRouter({ history, routes })
 

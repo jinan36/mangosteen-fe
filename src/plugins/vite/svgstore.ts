@@ -8,12 +8,12 @@ interface Options {
   inline?: boolean
 }
 
-const svgstore = (options: Options = {}) => {
+const svgStore = (options: Options = {}) => {
   const inputFolder = options.inputFolder || 'src/assets/icons'
   return {
-    name: 'svgstore',
+    name: 'svg-store',
     resolveId(id: string) {
-      if (id === '@svgstore')
+      if (id === 'svg.store')
         return 'svg_bundle.js'
     },
     load(id: string) {
@@ -22,9 +22,9 @@ const svgstore = (options: Options = {}) => {
         const iconsDir = path.resolve(inputFolder)
         for (const file of fs.readdirSync(iconsDir)) {
           const filepath = path.join(iconsDir, file)
-          const svgid = path.parse(file).name
+          const svgId = path.parse(file).name
           const code = fs.readFileSync(filepath, { encoding: 'utf-8' })
-          sprites.add(svgid, code)
+          sprites.add(svgId, code)
         }
         const { data: code } = optimize(
           sprites.toString({ inline: options.inline }),
@@ -66,4 +66,4 @@ const svgstore = (options: Options = {}) => {
     },
   }
 }
-export default svgstore
+export default svgStore
