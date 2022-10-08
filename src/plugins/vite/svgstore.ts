@@ -1,49 +1,48 @@
-import fs from "fs";
-import path from "path";
-import store from "svgstore";
-import { optimize } from "svgo";
+import fs from 'fs'
+import path from 'path'
+import store from 'svgstore'
+import { optimize } from 'svgo'
 
-type Options = {
-  inputFolder?: string;
-  inline?: boolean;
-};
+interface Options {
+  inputFolder?: string
+  inline?: boolean
+}
 
 const svgstore = (options: Options = {}) => {
-  const inputFolder = options.inputFolder || "src/assets/icons";
+  const inputFolder = options.inputFolder || 'src/assets/icons'
   return {
-    name: "svgstore",
+    name: 'svgstore',
     resolveId(id: string) {
-      if (id === "@svgstore") {
-        return "svg_bundle.js";
-      }
+      if (id === '@svgstore')
+        return 'svg_bundle.js'
     },
     load(id: string) {
-      if (id === "svg_bundle.js") {
-        const sprites = store(options);
-        const iconsDir = path.resolve(inputFolder);
+      if (id === 'svg_bundle.js') {
+        const sprites = store(options)
+        const iconsDir = path.resolve(inputFolder)
         for (const file of fs.readdirSync(iconsDir)) {
-          const filepath = path.join(iconsDir, file);
-          const svgid = path.parse(file).name;
-          let code = fs.readFileSync(filepath, { encoding: "utf-8" });
-          sprites.add(svgid, code);
+          const filepath = path.join(iconsDir, file)
+          const svgid = path.parse(file).name
+          const code = fs.readFileSync(filepath, { encoding: 'utf-8' })
+          sprites.add(svgid, code)
         }
         const { data: code } = optimize(
           sprites.toString({ inline: options.inline }),
           {
             plugins: [
-              "cleanupAttrs",
-              "removeDoctype",
-              "removeComments",
-              "removeTitle",
-              "removeDesc",
-              "removeEmptyAttrs",
+              'cleanupAttrs',
+              'removeDoctype',
+              'removeComments',
+              'removeTitle',
+              'removeDesc',
+              'removeEmptyAttrs',
               {
-                name: "removeAttrs",
-                params: { attrs: "(data-name|data-xxx)" },
+                name: 'removeAttrs',
+                params: { attrs: '(data-name|data-xxx)' },
               },
             ],
-          }
-        );
+          },
+        )
 
         return `const div = document.createElement('div')
                 div.innerHTML = \`${code}\`
@@ -62,9 +61,9 @@ const svgstore = (options: Options = {}) => {
                     } else {
                         document.body.appendChild(div)
                     }
-                })`;
+                })`
       }
     },
-  };
-};
-export default svgstore;
+  }
+}
+export default svgstore

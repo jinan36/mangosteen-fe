@@ -1,5 +1,6 @@
-import { defineComponent, PropType } from "vue";
-import { OverlayAction } from "./OverlayAction";
+import type { PropType } from 'vue'
+import { defineComponent } from 'vue'
+import { OverlayAction } from './OverlayAction'
 
 export const Overlay = defineComponent({
   props: {
@@ -7,13 +8,12 @@ export const Overlay = defineComponent({
       type: Function as PropType<() => void>,
     },
   },
-  setup(props, context) {
+  setup(props) {
     const onClose = () => {
-      props.onClose?.();
-    };
+      props.onClose?.()
+    }
     const onClickSignIn = () => {
-      console.log("sign in");
-    };
+    }
     return () => (
       <>
         <div
@@ -68,6 +68,6 @@ export const Overlay = defineComponent({
           </nav>
         </div>
       </>
-    );
+    )
   },
-});
+})

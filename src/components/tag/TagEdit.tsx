@@ -1,7 +1,7 @@
-import { defineComponent } from "vue";
+import { defineComponent } from 'vue'
 
 export const TagEdit = defineComponent({
   setup() {
-    return () => <div>TagEdit</div>;
+    return () => <div>TagEdit</div>
   },
-});
+})

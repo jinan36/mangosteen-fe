@@ -1,6 +1,7 @@
-import { defineComponent, PropType } from "vue";
-import { Icon } from "./Icon";
-import type { IconNames } from "./Icon";
+import type { PropType } from 'vue'
+import { defineComponent } from 'vue'
+import { Icon } from './Icon'
+import type { IconNames } from './Icon'
 
 export const FloatButton = defineComponent({
   props: {
@@ -30,6 +31,6 @@ export const FloatButton = defineComponent({
           name={props.iconName}
         ></Icon>
       </div>
-    );
+    )
   },
-});
+})

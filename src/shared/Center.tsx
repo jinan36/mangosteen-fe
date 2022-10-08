@@ -1,31 +1,32 @@
-import { defineComponent, PropType } from "vue";
+import type { PropType } from 'vue'
+import { defineComponent } from 'vue'
 
 const directionMap = {
-  "-": "horizontal",
-  horizontal: "horizontal",
-  "|": "vertical",
-  vertical: "vertical",
-};
+  '-': 'horizontal',
+  'horizontal': 'horizontal',
+  '|': 'vertical',
+  'vertical': 'vertical',
+}
 
 export const Center = defineComponent({
   props: {
     direction: {
-      type: String as PropType<"-" | "|" | "horizontal" | "vertical">,
-      default: "horizontal",
+      type: String as PropType<'-' | '|' | 'horizontal' | 'vertical'>,
+      default: 'horizontal',
     },
   },
   setup(props, context) {
     const isHorizontal = $computed(
-      () => directionMap[props.direction] === "horizontal"
-    );
+      () => directionMap[props.direction] === 'horizontal',
+    )
     return () => (
       <div
-        flex={["~", isHorizontal ? "row" : "col"].join(" ")}
+        flex={['~', isHorizontal ? 'row' : 'col'].join(' ')}
         justify="center"
         items="center"
       >
         {context.slots.default?.()}
       </div>
-    );
+    )
   },
-});
+})

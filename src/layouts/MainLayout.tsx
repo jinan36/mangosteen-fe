@@ -1,5 +1,5 @@
-import { defineComponent } from "vue";
-import { Navbar } from "../shared/Navbar";
+import { defineComponent } from 'vue'
+import { Navbar } from '../shared/Navbar'
 
 export const MainLayout = defineComponent({
   setup(_, { slots }) {
@@ -13,6 +13,6 @@ export const MainLayout = defineComponent({
         </Navbar>
         {slots.default?.()}
       </div>
-    );
+    )
   },
-});
+})

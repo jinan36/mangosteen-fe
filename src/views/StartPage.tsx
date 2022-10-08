@@ -1,22 +1,22 @@
-import { defineComponent } from "vue";
-import { RouterLink } from "vue-router";
-import { MainLayout } from "../layouts/MainLayout";
-import { Button } from "../shared/Button";
-import { Center } from "../shared/Center";
-import { FloatButton } from "../shared/FloatButton";
-import { Icon } from "../shared/Icon";
-import { Overlay } from "../shared/overlay/Overlay";
+import { defineComponent } from 'vue'
+import { RouterLink } from 'vue-router'
+import { MainLayout } from '../layouts/MainLayout'
+import { Button } from '../shared/Button'
+import { Center } from '../shared/Center'
+import { FloatButton } from '../shared/FloatButton'
+import { Icon } from '../shared/Icon'
+import { Overlay } from '../shared/overlay/Overlay'
 
 export const StartPage = defineComponent({
   setup() {
-    let overlayVisible = $ref(false);
+    let overlayVisible = $ref(false)
     const onClickMenu = () => {
-      overlayVisible = !overlayVisible;
-    };
+      overlayVisible = !overlayVisible
+    }
     return () => (
       <MainLayout>
         {{
-          title: () => "山竹记账",
+          title: () => '山竹记账',
           icon: () => (
             <Icon
               w="30px"
@@ -47,6 +47,6 @@ export const StartPage = defineComponent({
           ),
         }}
       </MainLayout>
-    );
+    )
   },
-});
+})

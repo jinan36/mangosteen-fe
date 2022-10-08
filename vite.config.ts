@@ -1,15 +1,15 @@
-import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
-import vueJsx from "@vitejs/plugin-vue-jsx";
-import Unocss from "unocss/vite";
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
+import Unocss from 'unocss/vite'
 import {
-  presetUno,
-  presetAttributify,
-  transformerAttributifyJsx,
   toEscapedSelector as e,
-} from "unocss";
-import svgstore from "./src/plugins/vite/svgstore";
-import { createStyleImportPlugin } from "vite-plugin-style-import";
+  presetAttributify,
+  presetUno,
+  transformerAttributifyJsx,
+} from 'unocss'
+import { createStyleImportPlugin } from 'vite-plugin-style-import'
+import svgstore from './src/plugins/vite/svgstore'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -26,20 +26,21 @@ export default defineConfig({
           /^custom-(.+)$/,
           (
             [, name],
-            { rawSelector, currentSelector, variantHandlers, theme }
+            { rawSelector },
           ) => {
             // discard mismatched rules
-            if (!name.includes("scroll-hide")) return;
+            if (!name.includes('scroll-hide'))
+              return
 
             // if you want, you can disable the variants for this rule
             // if (variantHandlers.length) return;
-            const selector = e(rawSelector);
+            const selector = e(rawSelector)
             // return a string instead of an object
             return `
             ${selector}::-webkit-scrollbar {
               display: none;
             }
-            `;
+            `
           },
         ],
       ],
@@ -51,7 +52,7 @@ export default defineConfig({
       ],
       theme: {
         boxShadow: {
-          formInputInner: "inset 0 0 3px var(--input-shadow)",
+          formInputInner: 'inset 0 0 3px var(--input-shadow)',
         },
         fontFamily: {
           emoji: [
@@ -62,7 +63,7 @@ export default defineConfig({
             '"Noto Color Emoji"',
             '"EmojiOne Color"',
             '"Android Emoji"',
-            "sans-serif",
+            'sans-serif',
           ],
         },
       },
@@ -71,11 +72,11 @@ export default defineConfig({
     createStyleImportPlugin({
       libs: [
         {
-          libraryName: "vant",
+          libraryName: 'vant',
           esModule: true,
-          resolveStyle: (name) => `../es/${name}/style`,
+          resolveStyle: name => `../es/${name}/style`,
         },
       ],
     }),
   ],
-});
+})

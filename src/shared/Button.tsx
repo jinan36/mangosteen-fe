@@ -1,4 +1,4 @@
-import { defineComponent } from "vue";
+import { defineComponent } from 'vue'
 
 export const Button = defineComponent({
   setup(_, { slots }) {
@@ -12,6 +12,6 @@ export const Button = defineComponent({
       >
         {slots.default?.()}
       </button>
-    );
+    )
   },
-});
+})

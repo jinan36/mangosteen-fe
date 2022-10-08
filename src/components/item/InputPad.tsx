@@ -1,116 +1,116 @@
-import { defineComponent } from "vue";
-import { Icon } from "../../shared/Icon";
-import { time } from "../../shared/time";
-import { Popup, DatetimePicker } from "vant";
-import { useInputPad } from "../../hooks/useInputPad";
+import { defineComponent } from 'vue'
+import { DatetimePicker, Popup } from 'vant'
+import { Icon } from '../../shared/Icon'
+import { time } from '../../shared/time'
+import { useInputPad } from '../../hooks/useInputPad'
 
 export const InputPad = defineComponent({
   setup() {
-    const _now = new Date();
-    let now = $ref(_now);
-    let tempDate = $ref(_now);
-    let popVisible = $ref(false);
+    const _now = new Date()
+    let now = $ref(_now)
+    let tempDate = $ref(_now)
+    let popVisible = $ref(false)
     const showDatePicker = () => {
-      tempDate = now;
-      popVisible = true;
-    };
+      tempDate = now
+      popVisible = true
+    }
     const hideDatePicker = () => {
-      popVisible = false;
-    };
+      popVisible = false
+    }
     const setDate = () => {
-      now = tempDate;
-      hideDatePicker();
-    };
+      now = tempDate
+      hideDatePicker()
+    }
 
-    const { amount, appendText, backspace } = useInputPad();
+    const { amount, appendText, backspace } = useInputPad()
     const buttons = [
       {
-        text: "1",
+        text: '1',
         onClick: () => {
-          appendText(1);
+          appendText(1)
         },
       },
       {
-        text: "2",
+        text: '2',
         onClick: () => {
-          appendText(2);
+          appendText(2)
         },
       },
       {
-        text: "3",
+        text: '3',
         onClick: () => {
-          appendText(3);
+          appendText(3)
         },
       },
       {
         text: () => <Icon w="24px" h="24px" fill="#333" name="backspace" />,
         onClick: () => {
-          backspace();
+          backspace()
         },
       },
       {
-        text: "4",
+        text: '4',
         onClick: () => {
-          appendText(4);
+          appendText(4)
         },
       },
       {
-        text: "5",
+        text: '5',
         onClick: () => {
-          appendText(5);
+          appendText(5)
         },
       },
       {
-        text: "6",
+        text: '6',
         onClick: () => {
-          appendText(6);
+          appendText(6)
         },
       },
       {
-        text: "+",
+        text: '+',
         onClick: () => {
-          appendText("+");
+          appendText('+')
         },
       },
       {
-        text: "7",
+        text: '7',
         onClick: () => {
-          appendText(7);
+          appendText(7)
         },
       },
       {
-        text: "8",
+        text: '8',
         onClick: () => {
-          appendText(8);
+          appendText(8)
         },
       },
       {
-        text: "9",
+        text: '9',
         onClick: () => {
-          appendText(9);
+          appendText(9)
         },
       },
       {
-        text: "-",
+        text: '-',
         onClick: () => {
-          appendText("-");
+          appendText('-')
         },
       },
-      { text: "再记", onClick: () => {} },
+      { text: '再记', onClick: () => { } },
       {
-        text: "0",
+        text: '0',
         onClick: () => {
-          appendText(0);
+          appendText(0)
         },
       },
       {
-        text: ".",
+        text: '.',
         onClick: () => {
-          appendText(".");
+          appendText('.')
         },
       },
-      { text: "保存", onClick: () => {} },
-    ];
+      { text: '保存', onClick: () => { } },
+    ]
     return () => (
       <>
         <div
@@ -171,10 +171,10 @@ export const InputPad = defineComponent({
           bg="$input-pad-button-border-color"
         >
           {buttons.map((button, index) => {
-            const cls =
-              index === 15
-                ? "bg-$input-pad-button-bg-important! c-$input-pad-button-text-important!"
-                : "";
+            const cls
+              = index === 15
+                ? 'bg-$input-pad-button-bg-important! c-$input-pad-button-text-important!'
+                : ''
             return (
               <button
                 class={cls}
@@ -183,14 +183,14 @@ export const InputPad = defineComponent({
                 flex="~ center-center"
                 onClick={button.onClick}
               >
-                {typeof button.text === "function"
+                {typeof button.text === 'function'
                   ? button.text()
                   : button.text}
               </button>
-            );
+            )
           })}
         </div>
       </>
-    );
+    )
   },
-});
+})

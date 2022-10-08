@@ -1,6 +1,8 @@
-import { defineComponent, PropType } from "vue";
-import { RouterLink } from "vue-router";
-import { Icon, IconNames } from "../Icon";
+import type { PropType } from 'vue'
+import { defineComponent } from 'vue'
+import { RouterLink } from 'vue-router'
+import type { IconNames } from '../Icon'
+import { Icon } from '../Icon'
 
 export const OverlayAction = defineComponent({
   props: {
@@ -16,6 +18,6 @@ export const OverlayAction = defineComponent({
         <Icon name={props.iconName} />
         <span>{slots.default?.()}</span>
       </RouterLink>
-    );
+    )
   },
-});
+})

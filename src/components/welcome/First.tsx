@@ -1,5 +1,5 @@
-import { defineComponent } from "vue";
-import { Card } from "./Card";
+import { defineComponent } from 'vue'
+import { Card } from './Card'
 
 export const First = defineComponent({
   setup() {
@@ -14,6 +14,6 @@ export const First = defineComponent({
           还要会省钱
         </h2>
       </Card>
-    );
+    )
   },
-});
+})

@@ -1,3 +1,3 @@
-import { createWebHistory } from "vue-router";
+import { createWebHistory } from 'vue-router'
 
-export const history = createWebHistory();
+export const history = createWebHistory()

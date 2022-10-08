@@ -1,26 +1,22 @@
-import { defineComponent } from "vue";
-import { allGroups, emojiList } from "../../assets/emoji/database";
-import { MainLayout } from "../../layouts/MainLayout";
-import { Button } from "../../shared/Button";
-import { Icon } from "../../shared/Icon";
+import { defineComponent } from 'vue'
+import { allGroups, emojiList } from '../../assets/emoji/database'
+import { MainLayout } from '../../layouts/MainLayout'
+import { Button } from '../../shared/Button'
+import { Icon } from '../../shared/Icon'
 
 export const TagCreate = defineComponent({
   setup() {
-    let selectedGroup = $ref(allGroups[0][1]);
+    let selectedGroup = $ref(allGroups[0][1])
     const emojis = $computed(() => {
-      const find = emojiList.find((item) => item[0] === selectedGroup);
-      if (find) {
-        const [_, ...rest] = find;
-        return [...rest[0]];
-      } else {
-        return [];
-      }
-    });
+      const find = emojiList.find(item => item[0] === selectedGroup)
+
+      return find ? [...find[1][0]] : []
+    })
     return () => (
       <MainLayout>
         {{
-          title: () => "新建标签",
-          icon: () => <Icon name="left" onClick={() => {}} />,
+          title: () => '新建标签',
+          icon: () => <Icon name="left" onClick={() => { }} />,
           default: () => (
             <form p="16px">
               <div mt="8px">
@@ -58,10 +54,10 @@ export const TagCreate = defineComponent({
                     >
                       <nav flex="~ nowrap" overflow="auto" custom="scroll-hide">
                         {allGroups.map((group) => {
-                          const cls =
-                            group[1] === selectedGroup
-                              ? "border-$emoji-nav-emoji-selected"
-                              : "border-transparent";
+                          const cls
+                            = group[1] === selectedGroup
+                              ? 'border-$emoji-nav-emoji-selected'
+                              : 'border-transparent'
                           return (
                             <span
                               class={cls}
@@ -73,7 +69,7 @@ export const TagCreate = defineComponent({
                             >
                               {group[0]}
                             </span>
-                          );
+                          )
                         })}
                       </nav>
                       <ol
@@ -85,7 +81,7 @@ export const TagCreate = defineComponent({
                         p="x4px"
                         custom="scroll-hide"
                       >
-                        {emojis.map((emoji) => (
+                        {emojis.map(emoji => (
                           <li flex="shrink-0 grow-0" w="1/10" text="center">
                             {emoji}
                           </li>
@@ -112,6 +108,6 @@ export const TagCreate = defineComponent({
           ),
         }}
       </MainLayout>
-    );
+    )
   },
-});
+})

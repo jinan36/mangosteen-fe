@@ -1,5 +1,5 @@
-import { defineComponent } from "vue";
-import { Card } from "./Card";
+import { defineComponent } from 'vue'
+import { Card } from './Card'
 
 export const Fourth = defineComponent({
   setup() {
@@ -14,6 +14,6 @@ export const Fourth = defineComponent({
           不遗漏每一笔账单
         </h2>
       </Card>
-    );
+    )
   },
-});
+})

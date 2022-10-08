@@ -1,6 +1,6 @@
-import { RouterLink } from "vue-router";
-import { defineComponent } from "vue";
-import { Actions } from "./Actions";
+import { RouterLink } from 'vue-router'
+import { defineComponent } from 'vue'
+import { Actions } from './Actions'
 
 export const FourthActions = defineComponent({
   setup() {
@@ -16,6 +16,6 @@ export const FourthActions = defineComponent({
           跳过
         </RouterLink>
       </Actions>
-    );
+    )
   },
-});
+})

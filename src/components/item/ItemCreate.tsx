@@ -1,18 +1,18 @@
-import { defineComponent } from "vue";
-import { useRouter } from "vue-router";
-import { MainLayout } from "../../layouts/MainLayout";
-import { Icon } from "../../shared/Icon";
-import { Tab, Tabs } from "../../shared/Tabs";
-import { InputPad } from "./InputPad";
+import { defineComponent } from 'vue'
+import { useRouter } from 'vue-router'
+import { MainLayout } from '../../layouts/MainLayout'
+import { Icon } from '../../shared/Icon'
+import { Tab, Tabs } from '../../shared/Tabs'
+import { InputPad } from './InputPad'
 
 export const ItemCreate = defineComponent({
   setup() {
-    const router = useRouter();
-    let kind = $ref("支出");
+    const router = useRouter()
+    const kind = $ref('支出')
     return () => (
       <MainLayout>
         {{
-          title: () => "记一笔",
+          title: () => '记一笔',
           icon: () => <Icon name="left" onClick={() => router.back()}></Icon>,
           default: () => (
             <>
@@ -27,6 +27,6 @@ export const ItemCreate = defineComponent({
           ),
         }}
       </MainLayout>
-    );
+    )
   },
-});
+})

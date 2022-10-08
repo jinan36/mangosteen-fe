@@ -1,4 +1,4 @@
-import { defineComponent } from "vue";
+import { defineComponent } from 'vue'
 
 export const Card = defineComponent({
   setup(_, { slots }) {
@@ -14,6 +14,6 @@ export const Card = defineComponent({
       >
         {slots.default?.()}
       </div>
-    );
+    )
   },
-});
+})

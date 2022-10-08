@@ -1,4 +1,4 @@
-import { defineComponent } from "vue";
+import { defineComponent } from 'vue'
 
 export const Navbar = defineComponent({
   setup(_, { slots }) {
@@ -29,6 +29,6 @@ export const Navbar = defineComponent({
           {slots.default?.()}
         </span>
       </div>
-    );
+    )
   },
-});
+})
