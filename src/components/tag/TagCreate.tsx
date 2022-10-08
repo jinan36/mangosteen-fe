@@ -10,7 +10,7 @@ export const TagCreate = defineComponent({
     const emojis = $computed(() => {
       const find = emojiList.find(item => item[0] === selectedGroup)
 
-      return find ? [...find[1][0]] : []
+      return find ? [...find[1]] : []
     })
     return () => (
       <MainLayout>
@@ -82,7 +82,7 @@ export const TagCreate = defineComponent({
                         custom="scroll-hide"
                       >
                         {emojis.map(emoji => (
-                          <li flex="shrink-0 grow-0" w="1/10" text="center">
+                          <li flex="~ center-center shrink-0 grow-0" w="1/10" overflow="hidden">
                             {emoji}
                           </li>
                         ))}
