@@ -4,6 +4,30 @@ import { Icon } from '../../shared/Icon'
 import { time } from '../../shared/time'
 import { useInputPad } from '../../hooks/useInputPad'
 
+const NoteAndAmount = defineComponent({
+  setup(props, { slots }) {
+    return () => <div flex="~ between-center" p="16px"
+    font="mono"
+    bg="$overlay-bg">{slots.default?.()}</div>
+  },
+})
+
+const Actions = defineComponent({
+  setup(props, { slots }) {
+    return () => <div flex="~ between-center" p="x16px b16px t4px" font="mono" bg="$overlay-bg">{slots.default?.()}</div>
+  },
+})
+
+const ButtonsWrapper = defineComponent({
+  setup(props, { slots }) {
+    return () => <div grid="~ cols-4"
+    auto="rows-48px cols-fr"
+    gap="1px"
+    border="t-1 $input-pad-button-border-color"
+    bg="$input-pad-button-border-color">{slots.default?.()}</div>
+  },
+})
+
 export const InputPad = defineComponent({
   setup() {
     const _now = new Date()
@@ -112,13 +136,8 @@ export const InputPad = defineComponent({
       { text: '保存', onClick: () => { } },
     ]
     return () => (
-      <>
-        <div
-          flex="~ between-center"
-          p="16px"
-          font="mono"
-          border="t-1 t-$input-pad-button-border-color"
-        >
+      <div border="t-1 t-$input-pad-button-border-color">
+        <NoteAndAmount>
           <span text="12px" flex="~ center-center" c="$date-text">
             <Icon
               w="20px"
@@ -132,9 +151,9 @@ export const InputPad = defineComponent({
           <span text="20px" c="$input-pad-amount-text">
             {amount.value}
           </span>
-        </div>
-        <div flex="~ between-center" p="x16px b16px t4px" font="mono">
-          <span
+        </NoteAndAmount>
+        <Actions>
+          <div
             text="12px"
             flex="~ center-center"
             c="$input-pad-date-text"
@@ -161,15 +180,9 @@ export const InputPad = defineComponent({
                 />
               </Popup>
             </span>
-          </span>
-        </div>
-        <div
-          grid="~ cols-4"
-          auto="rows-48px cols-fr"
-          gap="1px"
-          border="t-1 $input-pad-button-border-color"
-          bg="$input-pad-button-border-color"
-        >
+          </div>
+        </Actions>
+        <ButtonsWrapper>
           {buttons.map((button, index) => {
             const cls
               = index === 15
@@ -189,8 +202,9 @@ export const InputPad = defineComponent({
               </button>
             )
           })}
-        </div>
-      </>
+        </ButtonsWrapper>
+      </div>
     )
   },
 })
+
