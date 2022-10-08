@@ -48,11 +48,11 @@ export const TagCreate = defineComponent({
                       max-w="full"
                       flex="grow"
                       border="1 $input-border-color rd-$input-radius"
-                      text="14px"
+                      text="20px"
                       p="x1px"
                       font="emoji"
                     >
-                      <nav flex="~ nowrap" overflow="auto" custom="scroll-hide">
+                      <nav flex="~ nowrap" overflow="auto" custom="scroll-hide" border="b-1 $emoji-nav-border-color">
                         {allGroups.map((group) => {
                           const cls
                             = group[1] === selectedGroup
