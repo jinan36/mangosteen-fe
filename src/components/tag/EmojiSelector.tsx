@@ -18,7 +18,7 @@ export const EmojiSelector = defineComponent({
     }
     return () => <div
       flex="grow"
-      border="1 $input-border-color rd-$input-radius"
+      border="1 rd-$input-radius"
       text="20px"
       p="x1px"
       font="emoji"

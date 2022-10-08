@@ -23,6 +23,9 @@ export const TagCreate = defineComponent({
       validate()
     }
 
+    const borderColorClass = (errors?: string[]) => {
+      return (errors && errors.length) ? 'children:border-$error-color' : 'children:border-$input-border-color'
+    }
     return () => (
       <MainLayout>
         {{
@@ -33,16 +36,15 @@ export const TagCreate = defineComponent({
               <div mt="8px">
                 <label>
                   <span>标签名</span>
-                  <div flex="~" mt="4px">
+                  <div flex="~" mt="4px" class={[borderColorClass(errors.value.name)]}>
                     <input
                       min-h="$input-min-height"
                       max-w="full"
                       flex="grow"
-                      border="1 $input-border-color rd-$input-radius"
+                      border="1 rd-$input-radius"
                       text="18px"
                       p="x16px"
                       shadow="formInputInner"
-                      class="border-$error-color"
                       v-model={formData.name}
                     ></input>
                   </div>
@@ -54,7 +56,7 @@ export const TagCreate = defineComponent({
               <div mt="8px">
                 <label>
                   <span>符号 {formData.sign}</span>
-                  <div flex="~" mt="4px">
+                  <div flex="~" mt="4px" class={[borderColorClass(errors.value.sign)]}>
                     <EmojiSelector v-model={formData.sign} min-h="$input-min-height"
                       max-w="full" />
                   </div>
