@@ -8,7 +8,7 @@ export const time = (date = new Date()) => {
       const hour = date.getHours()
       const minute = date.getMinutes()
       const second = date.getSeconds()
-      const msecond = date.getMilliseconds()
+      const mSecond = date.getMilliseconds()
       return pattern
         .replace(/YYYY/g, year.toString())
         .replace(/MM/, month.toString().padStart(2, '0'))
@@ -16,7 +16,7 @@ export const time = (date = new Date()) => {
         .replace(/HH/, hour.toString().padStart(2, '0'))
         .replace(/mm/, minute.toString().padStart(2, '0'))
         .replace(/ss/, second.toString().padStart(2, '0'))
-        .replace(/SSS/, msecond.toString().padStart(3, '0'))
+        .replace(/SSS/, mSecond.toString().padStart(3, '0'))
     },
   }
   return api
