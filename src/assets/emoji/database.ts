@@ -1,4 +1,4 @@
-export const emojiList = [
+export const emojiList: [string, string[]][] = [
   [
     'smileys-emotion',
     [

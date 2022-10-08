@@ -1,17 +1,16 @@
-import { defineComponent } from 'vue'
-import { allGroups, emojiList } from '../../assets/emoji/database'
+import { defineComponent, reactive } from 'vue'
 import { MainLayout } from '../../layouts/MainLayout'
 import { Button } from '../../shared/Button'
 import { Icon } from '../../shared/Icon'
+import { EmojiSelector } from './EmojiSelector'
 
 export const TagCreate = defineComponent({
   setup() {
-    let selectedGroup = $ref(allGroups[0][1])
-    const emojis = $computed(() => {
-      const find = emojiList.find(item => item[0] === selectedGroup)
-
-      return find ? [...find[1]] : []
+    const formData = reactive({
+      name: '',
+      sign: '',
     })
+
     return () => (
       <MainLayout>
         {{
@@ -32,6 +31,7 @@ export const TagCreate = defineComponent({
                       p="x16px"
                       shadow="formInputInner"
                       class="border-$error-color"
+                      v-model={formData.name}
                     ></input>
                   </div>
                   <div mt="4px" c="$error-color" text="12px">
@@ -41,53 +41,10 @@ export const TagCreate = defineComponent({
               </div>
               <div mt="8px">
                 <label>
-                  <span>符号</span>
+                  <span>符号 {formData.sign}</span>
                   <div flex="~" mt="4px">
-                    <div
-                      min-h="$input-min-height"
-                      max-w="full"
-                      flex="grow"
-                      border="1 $input-border-color rd-$input-radius"
-                      text="20px"
-                      p="x1px"
-                      font="emoji"
-                    >
-                      <nav flex="~ nowrap" overflow="auto" custom="scroll-hide" border="b-1 $emoji-nav-border-color">
-                        {allGroups.map((group) => {
-                          const cls
-                            = group[1] === selectedGroup
-                              ? 'border-$emoji-nav-emoji-selected'
-                              : 'border-transparent'
-                          return (
-                            <span
-                              class={cls}
-                              flex="shrink-0"
-                              inline="block"
-                              p="8px"
-                              border="b-3"
-                              onClick={() => (selectedGroup = group[1])}
-                            >
-                              {group[0]}
-                            </span>
-                          )
-                        })}
-                      </nav>
-                      <ol
-                        flex="~ wrap"
-                        text="22px"
-                        leading="32px"
-                        h="384px"
-                        overflow="auto"
-                        p="x4px"
-                        custom="scroll-hide"
-                      >
-                        {emojis.map(emoji => (
-                          <li flex="~ center-center shrink-0 grow-0" w="1/10" overflow="hidden">
-                            {emoji}
-                          </li>
-                        ))}
-                      </ol>
-                    </div>
+                    <EmojiSelector v-model={formData.sign} min-h="$input-min-height"
+                      max-w="full" />
                   </div>
                   <div mt="4px" c="$error-color" text="12px">
                     <span>必填</span>
@@ -99,7 +56,7 @@ export const TagCreate = defineComponent({
               </p>
               <div mt="8px">
                 <div flex="~" mt="4px">
-                  <Button flex="grow-1" min-h="$input-min-height" max-w="full">
+                  <Button min-h="$input-min-height" max-w="full" w="full">
                     确定
                   </Button>
                 </div>
