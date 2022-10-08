@@ -1,4 +1,6 @@
 import { defineComponent, reactive } from 'vue'
+import type { Rules } from '../../hooks/useValidate'
+import { useValidate } from '../../hooks/useValidate'
 import { MainLayout } from '../../layouts/MainLayout'
 import { Button } from '../../shared/Button'
 import { Icon } from '../../shared/Icon'
@@ -10,6 +12,16 @@ export const TagCreate = defineComponent({
       name: '',
       sign: '',
     })
+    const rules: Rules<typeof formData> = [
+      { key: 'name', type: 'required', message: '必填' },
+      { key: 'name', type: 'pattern', regex: /^.{1,4}$/, message: '只能填 1 到 4 个字符' },
+      { key: 'sign', type: 'required', message: '必填' },
+    ]
+    const { errors, validate } = useValidate<typeof formData>(formData, rules)
+    const onSumit = (e: Event) => {
+      e.preventDefault()
+      validate()
+    }
 
     return () => (
       <MainLayout>
@@ -34,8 +46,8 @@ export const TagCreate = defineComponent({
                       v-model={formData.name}
                     ></input>
                   </div>
-                  <div mt="4px" c="$error-color" text="12px">
-                    <span>必填</span>
+                  <div mt="4px" c="$error-color" text="12px" min-h="16px">
+                    <span>{errors.value.name && errors.value.name[0]}</span>
                   </div>
                 </label>
               </div>
@@ -46,8 +58,8 @@ export const TagCreate = defineComponent({
                     <EmojiSelector v-model={formData.sign} min-h="$input-min-height"
                       max-w="full" />
                   </div>
-                  <div mt="4px" c="$error-color" text="12px">
-                    <span>必填</span>
+                  <div mt="4px" c="$error-color" text="12px" min-h="16px">
+                    <span>{errors.value.sign && errors.value.sign[0]}</span>
                   </div>
                 </label>
               </div>
@@ -56,7 +68,7 @@ export const TagCreate = defineComponent({
               </p>
               <div mt="8px">
                 <div flex="~" mt="4px">
-                  <Button min-h="$input-min-height" max-w="full" w="full">
+                  <Button min-h="$input-min-height" max-w="full" w="full" onClick={onSumit}>
                     确定
                   </Button>
                 </div>
