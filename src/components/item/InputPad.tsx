@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue'
 import { DatetimePicker, Popup } from 'vant'
 import { Icon } from '../../shared/Icon'
-import { time } from '../../shared/time'
+import { Time } from '../../shared/time'
 import { useInputPad } from '../../hooks/useInputPad'
 
 const NoteAndAmount = defineComponent({
@@ -169,7 +169,7 @@ export const InputPad = defineComponent({
               name="date"
             />
             <span>
-              <span onClick={showDatePicker}>{time(now).format()}</span>
+              <span onClick={showDatePicker}>{new Time(now).format()}</span>
               <Popup position="bottom" v-model:show={popVisible}>
                 <DatetimePicker
                   v-model={tempDate}
