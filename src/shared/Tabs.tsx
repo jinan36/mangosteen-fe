@@ -16,9 +16,13 @@ export const Tabs = defineComponent({
       type: String as PropType<string>,
       required: false,
     },
+    classPrefix: {
+      type: String,
+    },
   },
   emits: ['update:selected'],
   setup(props, { emit, slots }) {
+    const cp = props.classPrefix
     return () => {
       const tabs = slots.default?.()
       if (!tabs)
@@ -27,20 +31,18 @@ export const Tabs = defineComponent({
         if (tabs[i].type !== Tab)
           throw new Error('<Tabs> only accepts <Tab> as children')
       }
+      const selectedCls = $computed(() => (name?: string) => name === props.selected
+        ? 'relative after:content-none after:block after:absolute after:bottom-0 after:left-0 after:w-full after:h-4px after:bg-$tabs-indicator-bg'
+        : '')
 
       return (
-        <div>
-          <ol flex="~ between-center" text="center $navbar-text">
+        <div class={[`${cp}_tabs`]}>
+          <ol flex="~ between-center" text="center $navbar-text" bg="$navbar-bg-end" class={[`${cp}_tabs_nav`]}>
             {tabs.map(item => (
               <li
                 flex="grow shrink-0"
                 p="y12px"
-                bg="$navbar-bg-end"
-                class={
-                  item.props?.name === props.selected
-                    ? 'relative after:content-none after:block after:absolute after:bottom-0 after:left-0 after:w-full after:h-4px after:bg-$tabs-indicator-bg'
-                    : ''
-                }
+                class={[`${cp}_tabs_nav_item`, selectedCls(item.props?.name)]}
                 onClick={() => emit('update:selected', item.props?.name)}
               >
                 {item.props?.name}
