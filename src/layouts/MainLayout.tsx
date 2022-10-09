@@ -4,8 +4,8 @@ import { Navbar } from '../shared/Navbar'
 export const MainLayout = defineComponent({
   setup(_, { slots }) {
     return () => (
-      <div>
-        <Navbar>
+      <div relative="~">
+        <Navbar sticky="~" top="0">
           {{
             default: () => slots.title?.(),
             icon: () => slots.icon?.(),
