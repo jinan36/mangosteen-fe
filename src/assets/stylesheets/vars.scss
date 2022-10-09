@@ -1,5 +1,7 @@
 :root {
-  --main: #5c33be;
+  --main-color: #5c33be;
+  --error-color: #E10505;
+
   --welcome-card-bg: white;
   --welcome-text: white;
   --welcome-bg-start: #5d33be;
@@ -9,7 +11,9 @@
   --z-index-bottom-nav: 8;
   --transition-duration: 0.5s;
 
-  --button-bg: var(--main);
+  // Button.tsx
+  --button-bg: var(--main-color);
+  --button-bg-danger: var(--error-color);
   --button-text: white;
   --button-font-size: 18px;
   --button-radius: 8px;
@@ -25,7 +29,7 @@
   --z-index-overlay: 16;
   --overlay-mask-bg: rgba(0, 0, 0, 0.5);
   --overlay-bg: white;
-  --overlay-user-bg: var(--main);
+  --overlay-user-bg: var(--main-color);
   --overlay-user-text: white;
   --top-safe-area-height: 24px;
 
@@ -36,15 +40,14 @@
   --input-pad-amount-text: #53a867;
   --input-pad-date-text: #333;
   --input-pad-button-bg: white;
-  --input-pad-button-bg-important: var(--main);
+  --input-pad-button-bg-important: var(--main-color);
   --input-pad-button-text-important: white;
 
   // tag-form
   --input-min-height: 48px;
-  --input-border-color: var(--main);
+  --input-border-color: var(--main-color);
   --input-radius: var(--button-radius);
   --input-shadow: rgba(0, 0, 0, 0.25);
-  --error-color: #e10505;
   --emoji-nav-emoji-selected: #385ac1;
   --emoji-nav-border-color: #e0e0e0;
 
