@@ -30,6 +30,6 @@
     "unocss": "0.45.28",
     "vite": "3.1.6",
     "vite-plugin-style-import": "2.0.0",
-    "vue-tsc": "1.0.1"
+    "vue-tsc": "^1.0.2"
   }
 }
