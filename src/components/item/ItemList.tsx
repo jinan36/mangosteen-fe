@@ -9,7 +9,7 @@ export const ItemList = defineComponent({
     return () => <MainLayout>{
       {
         title: () => '山竹记账',
-        icon: () => <Icon name="menu" />,
+        icon: () => <Icon w="30px" h="30px" name="menu" />,
         default: () => (
           <Tabs classPrefix={'customTabs'} v-model:selected={selected}>
             <Tab name="本月">
