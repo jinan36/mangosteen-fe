@@ -50,14 +50,7 @@ export class Time {
         const d = date.getDate()
         date.setDate(1)
         date.setFullYear(date.getFullYear() + amount)
-        const d2 = new Date(
-          date.getFullYear(),
-          date.getMonth() + 1,
-          0,
-          0,
-          0,
-          0,
-        ).getDate()
+        const d2 = new Date(date.getFullYear(), date.getMonth() + 1, 0, 0, 0, 0).getDate()
         date.setDate(Math.min(d, d2))
         break
       }
