@@ -8,7 +8,7 @@ import {
   useRouter,
 } from 'vue-router'
 import { useSwipe } from '@vueuse/core'
-import s from './Welcome.module.scss'
+import s from './Welcome.module.styl'
 
 const forwardMap: Record<string, string> = {
   Welcome1: '/welcome/2',
