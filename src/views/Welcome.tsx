@@ -23,8 +23,8 @@ const backMap: Record<string, string> = {
 
 export const Welcome = defineComponent({
   setup() {
-    let enterFromClass = $ref(s.slide_fade_forward_enter_from)
-    let leaveToClass = $ref(s.slide_fade_forward_leave_to)
+    let enterFromClass = $ref(s.slideFadeForwardEnterFrom)
+    let leaveToClass = $ref(s.slideFadeForwardLeaveTo)
     onBeforeRouteUpdate((to, from) => {
       const fromIndexS = from.path.match(/welcome\/(\d*)/)?.[1] ?? ''
       const toIndexS = to.path.match(/welcome\/(\d*)/)?.[1] ?? ''
@@ -33,11 +33,11 @@ export const Welcome = defineComponent({
         const isForward
           = Number.parseInt(toIndexS, 10) > Number.parseInt(fromIndexS, 10)
         enterFromClass = isForward
-          ? s.slide_fade_forward_enter_from
-          : s.slide_fade_back_enter_from
+          ? s.slideFadeForwardEnterFrom
+          : s.slideFadeBackEnterFrom
         leaveToClass = isForward
-          ? s.slide_fade_forward_leave_to
-          : s.slide_fade_back_leave_to
+          ? s.slideFadeForwardLeaveTo
+          : s.slideFadeBackLeaveTo
       }
     })
 
@@ -66,7 +66,7 @@ export const Welcome = defineComponent({
           </svg>
           <h1>山竹记账</h1>
         </header>
-        <main>
+        <main ref={main}>
           <RouterView name="main">
             {({
               Component: X,
@@ -76,9 +76,9 @@ export const Welcome = defineComponent({
             }) => (
               <Transition
                 enterFromClass={enterFromClass}
-                enterActiveClass={s.slide_fade_enter_active}
+                enterActiveClass={s.slideFadeEnterActive}
                 leaveToClass={leaveToClass}
-                leaveActiveClass={s.slide_fade_leave_active}
+                leaveActiveClass={s.slideFadeLeaveActive}
               >
                 {X}
               </Transition>
