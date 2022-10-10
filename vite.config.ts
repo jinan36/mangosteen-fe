@@ -8,7 +8,8 @@ import {
   presetUno,
   transformerAttributifyJsx,
 } from 'unocss'
-import { createStyleImportPlugin } from 'vite-plugin-style-import'
+import Components from 'unplugin-vue-components/vite'
+import { VantResolver } from 'unplugin-vue-components/resolvers'
 import svgstore from './src/plugins/vite/svgstore'
 
 // https://vitejs.dev/config/
@@ -18,6 +19,12 @@ export default defineConfig(({ mode }) => {
     plugins: [
       vue({
         reactivityTransform: true,
+      }),
+      Components({
+        dirs: [],
+        extensions: ['tsx'],
+        resolvers: [VantResolver()],
+        include: [/\.(j|t)sx$/],
       }),
       vueJsx({}),
       Unocss({
@@ -71,15 +78,6 @@ export default defineConfig(({ mode }) => {
         },
       }),
       svgstore(),
-      createStyleImportPlugin({
-        libs: [
-          {
-            libraryName: 'vant',
-            esModule: true,
-            resolveStyle: name => `../es/${name}/style`,
-          },
-        ],
-      }),
     ],
     css: {
       modules: {
