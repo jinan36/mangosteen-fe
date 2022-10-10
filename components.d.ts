@@ -7,8 +7,6 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    RouterLink: typeof import('vue-router')['RouterLink']
-    RouterView: typeof import('vue-router')['RouterView']
     VanDatetimePicker: typeof import('vant/es')['DatetimePicker']
     VanPopup: typeof import('vant/es')['Popup']
   }

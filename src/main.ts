@@ -1,11 +1,11 @@
 import 'uno.css'
 import 'svg.store'
-
 import { createApp } from 'vue'
 import { createRouter } from 'vue-router'
 import { App } from './App'
 import { routes } from './config/routes'
 import { history } from './shared/history'
+import './main.styl'
 
 const router = createRouter({ history, routes })
 

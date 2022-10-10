@@ -21,10 +21,11 @@ export default defineConfig(({ mode }) => {
         reactivityTransform: true,
       }),
       Components({
+        types: [],
         dirs: [],
-        extensions: ['tsx'],
+        extensions: ['tsx', 'vue'],
         resolvers: [VantResolver()],
-        include: [/\.(j|t)sx$/],
+        include: [/\.vue$/, /\.vue\?vue/, /\.tsx$/, /\.tsx\?tsx/],
       }),
       vueJsx({}),
       Unocss({

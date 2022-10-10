@@ -1,6 +1,5 @@
 import { defineComponent } from 'vue'
 import { RouterView } from 'vue-router'
-import './App.styl'
 
 export const App = defineComponent({
   setup() {
