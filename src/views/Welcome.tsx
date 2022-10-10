@@ -59,32 +59,14 @@ export const Welcome = defineComponent({
     })
 
     return () => (
-      <div
-        h="[calc(100vh-var(--welcome-nav-height))]"
-        flex="~ col"
-        bg="gradient-to-b"
-        from="$welcome-bg-start"
-        to="$welcome-bg-end"
-        mb="$welcome-nav-height"
-      >
-        <header
-          flex="~ shrink-0 col"
-          justify="center"
-          items="center"
-          p="t66px"
-          c="#d4d4ee"
-        >
-          <svg w="64px" h="69px">
+      <div class={s.wrapper} >
+        <header>
+          <svg>
             <use xlinkHref="#mangosteen"></use>
           </svg>
           <h1>山竹记账</h1>
         </header>
-        <main
-          ref={main}
-          flex="~ grow col"
-          relative="~"
-          m="x16px t16px b$welcome-nav-gap"
-        >
+        <main>
           <RouterView name="main">
             {({
               Component: X,
@@ -103,7 +85,7 @@ export const Welcome = defineComponent({
             )}
           </RouterView>
         </main>
-        <footer flex="shrink-0">
+        <footer>
           <RouterView name="footer" />
         </footer>
       </div>
