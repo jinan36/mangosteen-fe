@@ -3,6 +3,7 @@ import { defineComponent } from 'vue'
 import { RouterLink } from 'vue-router'
 import type { IconNames } from '../Icon'
 import { Icon } from '../Icon'
+import classes from './OverlayAction.module.styl'
 
 export const OverlayAction = defineComponent({
   props: {
@@ -14,7 +15,7 @@ export const OverlayAction = defineComponent({
   },
   setup(props, { slots }) {
     return () => (
-      <RouterLink flex="~ start-center" p="y12px x16px" to={props.to}>
+      <RouterLink class={classes.wrapper} to={props.to}>
         <Icon name={props.iconName} />
         <span>{slots.default?.()}</span>
       </RouterLink>
