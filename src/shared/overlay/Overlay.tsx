@@ -1,7 +1,6 @@
 import type { PropType } from 'vue'
 import { defineComponent } from 'vue'
 import { OverlayAction } from './OverlayAction'
-import classes from './Overlay.module.styl'
 
 export const Overlay = defineComponent({
   props: {
@@ -18,21 +17,35 @@ export const Overlay = defineComponent({
     return () => (
       <>
         <div
-          class={classes.mask}
+          pos="fixed"
+          left="0"
+          top="$top-safe-area-height"
+          z="$z-index-overlay"
+          bg="$overlay-mask-bg"
+          w="full"
+          h="[calc(100%-var(--top-safe-area-height))]"
           onClick={onClose}
         ></div>
         <div
-          class={classes.overlay}
+          pos="fixed"
+          z="[calc(var(--z-index-overlay) + 1)]"
+          bg="$overlay-bg"
+          top="$top-safe-area-height"
+          left="0"
+          w="16em"
+          h="[calc(100%-var(--top-safe-area-height))]"
         >
           <section
-            class={classes.currentUser}
+            p="y32px x16px"
+            bg="$overlay-user-bg"
+            c="$overlay-user-text"
             onClick={onClickSignIn}
           >
             <h2>未登录用户</h2>
             <p>点击这里登录</p>
           </section>
           <nav>
-            <ul class={classes.actionList}>
+            <ul p="t16px" text="size-20px" m="svg:r12px">
               <li>
                 {/* to="/statistics" */}
                 <OverlayAction to="#" iconName="charts">

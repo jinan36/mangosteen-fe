@@ -1,4 +1,3 @@
-import 'svg.store'
 import { createApp } from 'vue'
 import { createRouter } from 'vue-router'
 import { routes } from './config/routes'
@@ -7,6 +6,7 @@ import { App } from './App'
 
 import './styles/main.css'
 import 'uno.css'
+import 'svg.store'
 
 const router = createRouter({ history, routes })
 
