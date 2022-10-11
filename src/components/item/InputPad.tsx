@@ -156,9 +156,9 @@ export const InputPad = defineComponent({
             text="12px"
             flex="~ center-center"
             c="$input-pad-date-text"
-            border="~ color-$input-pad-button-border-color rd-18px"
+            border="~ color-$input-pad-date-text rd-18px"
             p="y6px l10px r12px"
-            bg="$input-pad-button-border-color"
+            bg="$input-pad-date-bg"
           >
             <Icon
               w="20px"

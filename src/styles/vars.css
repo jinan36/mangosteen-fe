@@ -1,6 +1,11 @@
 :root {
   --main-color: #5c33be;
   --error-color: #E10505;
+  --amount-text: #53a867;
+  --date-text: #999999;
+  --button-border-color: #ddd;
+
+  /* welcome */
   --welcome-card-bg: white;
   --welcome-text: white;
   --welcome-bg-start: #5d33be;
@@ -9,6 +14,7 @@
   --welcome-nav-gap: 8px;
   --z-index-bottom-nav: 8;
   --transition-duration: 0.5s;
+
   /* Button.tsx */
   --button-bg: var(--main-color);
   --button-bg-danger: var(--error-color);
@@ -28,13 +34,16 @@
   --overlay-user-text: white;
   --top-safe-area-height: 24px;
   --tabs-indicator-bg: rgba(255, 255, 255, 0.5);
+
   /* input-pad */
-  --input-pad-button-border-color: #ddd;
-  --input-pad-amount-text: #53a867;
-  --input-pad-date-text: #333;
+  --input-pad-button-border-color: var(--button-border-color);
+  --input-pad-amount-text: var(--amount-text);
+  --input-pad-date-text: var(--date-text);
+  --input-pad-date-bg: white;
   --input-pad-button-bg: white;
   --input-pad-button-bg-important: var(--main-color);
   --input-pad-button-text-important: white;
+
   /* tag-form */
   --input-min-height: 48px;
   --input-border-color: var(--main-color);
@@ -42,6 +51,16 @@
   --input-shadow: rgba(0, 0, 0, 0.25);
   --emoji-nav-emoji-selected: #385ac1;
   --emoji-nav-border-color: #e0e0e0;
+
   /* tag */
   --tag-bg: #EFEFEF;
+
+  /* item-summary */
+  --list-tag-text: #333;
+  --list-amount-text: var(--amount-text);
+  --list-time-text: var(--date-text);
+  --total-bg: #252A43;
+  --total-text: white;
+  --total-income: #FE7275;
+  --total-expenses: #53A867;
 }
