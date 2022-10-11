@@ -28,7 +28,7 @@ export const Overlay = defineComponent({
         ></div>
         <div
           pos="fixed"
-          z="[calc(var(--z-index-overlay) + 1)]"
+          z="[calc(var(--z-index-overlay)+1)]"
           bg="$overlay-bg"
           top="$top-safe-area-height"
           left="0"
