@@ -6,6 +6,7 @@ import { Center } from '../shared/Center'
 import { FloatButton } from '../shared/FloatButton'
 import { Icon } from '../shared/Icon'
 import { Overlay } from '../shared/overlay/Overlay'
+import classes from './StartPage.module.styl'
 
 export const StartPage = defineComponent({
   setup() {
@@ -29,12 +30,12 @@ export const StartPage = defineComponent({
           ),
           default: () => (
             <>
-              <Center p="y120px">
-                <Icon name="pig" w="128px" h="128px" />
+              <Center class={classes.pigWrapper}>
+                <Icon name="pig" class={classes.pig}/>
               </Center>
-              <div p="16px">
+              <div class={classes.buttonWrapper}>
                 <RouterLink to="/items/create">
-                  <Button w="full">开始记账</Button>
+                  <Button class={classes.button}>开始记账</Button>
                 </RouterLink>
               </div>
               <RouterLink to="/items/create">
