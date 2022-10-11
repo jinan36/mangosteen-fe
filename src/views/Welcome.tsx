@@ -8,7 +8,7 @@ import {
   useRouter,
 } from 'vue-router'
 import { useSwipe } from '@vueuse/core'
-import s from './Welcome.module.styl'
+import s from './Welcome.module.css'
 
 const forwardMap: Record<string, string> = {
   Welcome1: '/welcome/2',
@@ -59,14 +59,14 @@ export const Welcome = defineComponent({
     })
 
     return () => (
-      <div class={s.wrapper} >
-        <header>
-          <svg>
+      <div mb="$welcome-nav-height" bg-gradient="to-b from-$welcome-bg-start to-$welcome-bg-end" flex="~ col" h="[calc(100vh-var(--welcome-nav-height))]" >
+        <header c="#d4d4ee" pt="66px" flex="~ shrink-0 col center-center">
+          <svg w="64px" h="69px">
             <use xlinkHref="#mangosteen"></use>
           </svg>
           <h1>山竹记账</h1>
         </header>
-        <main ref={main}>
+        <main ref={main} m="t16px x16px b$welcome-nav-gap" flex="~ grow col" pos="relative" >
           <RouterView name="main">
             {({
               Component: X,
@@ -85,7 +85,7 @@ export const Welcome = defineComponent({
             )}
           </RouterView>
         </main>
-        <footer>
+        <footer flex="shrink-0">
           <RouterView name="footer" />
         </footer>
       </div>

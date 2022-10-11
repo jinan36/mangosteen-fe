@@ -47,10 +47,10 @@ export default defineConfig(({ mode }) => {
               const selector = e(rawSelector)
               // return a string instead of an object
               return `
-            ${selector}::-webkit-scrollbar {
-              display: none;
-            }
-            `
+                ${selector}::-webkit-scrollbar {
+                  display: none;
+                }
+              `
             },
           ],
         ],

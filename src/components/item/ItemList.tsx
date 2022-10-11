@@ -11,7 +11,7 @@ export const ItemList = defineComponent({
         title: () => '山竹记账',
         icon: () => <Icon w="30px" h="30px" name="menu" />,
         default: () => (
-          <Tabs classPrefix={'customTabs'} v-model:selected={selected}>
+          <Tabs class={'customTabs'} v-model:selected={selected}>
             <Tab name="本月">
               list 1
             </Tab>
