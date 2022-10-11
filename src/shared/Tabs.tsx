@@ -16,6 +16,10 @@ export const Tabs = defineComponent({
       type: String as PropType<string>,
       required: false,
     },
+    shrink: {
+      type: Boolean as PropType<boolean>,
+      required: false,
+    },
   },
   emits: ['update:selected'],
   setup(props, { emit, slots }) {
@@ -28,18 +32,21 @@ export const Tabs = defineComponent({
           throw new Error('<Tabs> only accepts <Tab> as children')
       }
 
+      const getItemBaseClass = () => props.shrink ? 'flex-grow-0 pl16px pr16px' : 'flex-grow-1'
       const getItemClass = (name?: string) => name === props.selected
         ? 'relative after:content-none after:block after:absolute after:bottom-0 after:left-0 after:w-full after:h-4px after:bg-$tabs-indicator-bg'
         : ''
 
+      const getNavClass = () => props.shrink ? 'justify-start' : 'justify-between'
+
       return (
         <div>
-          <ol class="tab-nav" flex="~ between-center" text="center $navbar-text" bg="$navbar-bg-end">
+          <ol class={getNavClass} flex="~" items="center" text="center $navbar-text" bg="$navbar-bg-end">
             {tabs.map(item => (
               <li
-                flex="grow shrink-0"
+                flex="shrink-0"
                 p="y12px"
-                class={[getItemClass(item.props?.name), 'tab-item']}
+                class={[getItemBaseClass(), getItemClass(item.props?.name)]}
                 onClick={() => emit('update:selected', item.props?.name)}
               >
                 {item.props?.name}
