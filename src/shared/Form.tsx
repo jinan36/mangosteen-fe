@@ -1,6 +1,7 @@
 import type { PropType } from 'vue'
 import { defineComponent } from 'vue'
 import { EmojiSelector } from '../components/tag/EmojiSelector'
+import { Time } from './time'
 
 export const Form = defineComponent({
   props: {
@@ -13,13 +14,53 @@ export const Form = defineComponent({
   },
 })
 
+const DatePicker = defineComponent({
+  props: {
+    modelValue: { type: Time, required: true },
+  },
+  setup(props, { emit }) {
+    let datePickerVisible = $ref(false)
+    let tempDate = $ref(props.modelValue.getRaw())
+
+    return () => (<>
+      <input
+        min-h="$input-min-height"
+        border="1 rd-$input-radius"
+        text="18px"
+        p="x16px"
+        shadow="formInputInner"
+        readonly={true}
+        value={props.modelValue.format()}
+        onClick={() => {
+          tempDate = props.modelValue.getRaw()
+          datePickerVisible = true
+        }}
+      />
+      <van-popup position="bottom" v-model:show={datePickerVisible} teleport="body">
+        <van-datetime-picker
+          v-model={tempDate}
+          type="date"
+          title="请选择年月日"
+          onConfirm={(date: Date) => {
+            emit('update:modelValue', new Time(date))
+            datePickerVisible = false
+          }}
+          onCancel={() => {
+            datePickerVisible = false
+          }}
+        />
+      </van-popup>
+    </>)
+  },
+})
+
 export const FormItem = defineComponent({
   props: {
     label: {
       type: String,
     },
     modelValue: {
-      type: [String, Number],
+      type: [String, Number, Object] as PropType<string | number | Time>,
     },
     type: {
       type: String as PropType<'text' | 'emojiSelect' | 'date'>,
@@ -28,6 +69,7 @@ export const FormItem = defineComponent({
       type: String,
     },
   },
+  emits: ['update:modelValue'],
   setup(props, { slots, emit }) {
     const blockClass = $computed(() => {
       return props.error ? 'children:border-$error-color' : 'children:border-$input-border-color'
@@ -51,7 +93,7 @@ export const FormItem = defineComponent({
         case 'emojiSelect': {
           return (
             <EmojiSelector
-              value={props.modelValue}
+              modelValue={(props.modelValue as string)}
               {...{
                 'onUpdate:modelValue': (value: string) => emit('update:modelValue', value),
               }}
@@ -59,7 +101,11 @@ export const FormItem = defineComponent({
           )
         }
         case 'date': {
-          return <input />
+          return <DatePicker modelValue={(props.modelValue as Time)}
+            {...{
+              'onUpdate:modelValue': (value: Time) => emit('update:modelValue', value),
+            }}
+          />
         }
         default: {
           return slots.default?.()
