@@ -4,6 +4,7 @@
   --amount-text: #53a867;
   --date-text: #999999;
   --button-border-color: #ddd;
+  --bg: white;
 
   /* welcome */
   --welcome-card-bg: white;
@@ -63,4 +64,7 @@
   --total-text: white;
   --total-income: #FE7275;
   --total-expenses: #53A867;
+
+  /* dialog */
+  --dialog-header-text: white;
 }
