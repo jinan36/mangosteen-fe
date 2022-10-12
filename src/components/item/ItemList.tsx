@@ -32,10 +32,6 @@ export const ItemList = defineComponent({
     ]
 
     let overlayVisible = $ref(false)
-    watchEffect(() => {
-      if (selected === '自定义时间')
-        overlayVisible = true
-    })
     const onSubmitCustomTime = () => {
       overlayVisible = false
     }
@@ -46,7 +42,10 @@ export const ItemList = defineComponent({
         icon: () => <Icon w="30px" h="30px" name="menu" />,
         default: () => (
           <>
-            <Tabs v-model:selected={selected} shrink={true}>
+            <Tabs v-model:selected={selected} shrink={true} onUpdate:selected={(value: string) => {
+              if (value === '自定义时间')
+                overlayVisible = true
+            }}>
               <Tab name="本月">
                 <ItemSummary startDate={timeList[0].start.format()} endDate={timeList[0].end.format()} />
               </Tab>
