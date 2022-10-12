@@ -5,7 +5,7 @@ import { Button } from '../shared/Button'
 import { Center } from '../shared/Center'
 import { FloatButton } from '../shared/FloatButton'
 import { Icon } from '../shared/Icon'
-import { Overlay } from '../shared/overlay/Overlay'
+import { Overlay } from '../shared/Overlay'
 
 export const StartPage = defineComponent({
   setup() {
