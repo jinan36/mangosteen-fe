@@ -1,6 +1,7 @@
-import { watch } from 'fs'
 import { defineComponent, reactive, watchEffect } from 'vue'
 import { MainLayout } from '../../layouts/MainLayout'
+import { Button } from '../../shared/Button'
+import { Form, FormItem } from '../../shared/Form'
 import { Icon } from '../../shared/Icon'
 import { Tab, Tabs } from '../../shared/Tabs'
 import { Time } from '../../shared/time'
@@ -35,6 +36,9 @@ export const ItemList = defineComponent({
       if (selected === '自定义时间')
         overlayVisible = true
     })
+    const onSubmitCustomTime = () => {
+      overlayVisible = false
+    }
 
     return () => <MainLayout>{
       {
@@ -62,14 +66,17 @@ export const ItemList = defineComponent({
                   请选择时间
                 </header>
                 <main>
-                  <form>
-                    <div>
+                  <Form onSubmit={onSubmitCustomTime}>
+                    <FormItem label="开始时间" v-model={customTime.start} type="date" />
+                    <FormItem label="结束时间" v-model={customTime.end} type="date" />
+                    <FormItem>
+                        <div flex="~">
+                          <Button level="normal" flex="grow" attrType="button" onClick={() => overlayVisible = false}>取消</Button>
+                          <Button flex="grow" m="l16px" attrType="submit">确定</Button>
+                        </div>
+                    </FormItem>
 
-                    </div>
-                    <div>
-
-                    </div>
-                  </form>
+                  </Form>
                 </main>
               </div>
             </van-overlay>

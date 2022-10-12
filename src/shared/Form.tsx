@@ -10,7 +10,11 @@ export const Form = defineComponent({
     },
   },
   setup(props, { slots }) {
-    return () => <form p="16px" onSubmit={props.onSubmit}>{slots.default?.()}</form>
+    const handleSubmit = (e: Event) => {
+      e.preventDefault()
+      props.onSubmit?.(e)
+    }
+    return () => <form p="16px" onSubmit={handleSubmit}>{slots.default?.()}</form>
   },
 })
 

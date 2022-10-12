@@ -22,9 +22,8 @@ export const TagForm = defineComponent({
       { key: 'sign', type: 'required', message: '必填' },
     ]
     const { errors, validate } = useValidate<typeof formData>(formData, rules)
-    const onSubmit = (e: Event) => {
+    const onSubmit = () => {
       validate()
-      e.preventDefault()
     }
 
     return () => (
