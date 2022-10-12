@@ -37,7 +37,7 @@ export const useValidate = <T extends FData>(formData: T, rules: Rules<T>) => {
           }
           break
         case 'pattern':
-          if (!isEmpty && !rule.regex.test(value!.toString())) {
+          if (!isEmpty(value) && !rule.regex.test(value!.toString())) {
             errors.value[key] = errors.value[key] ?? []
             errors.value[key]?.push(message)
           }

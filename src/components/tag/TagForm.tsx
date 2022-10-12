@@ -2,7 +2,7 @@ import { defineComponent, reactive } from 'vue'
 import type { Rules } from '../../hooks/useValidate'
 import { useValidate } from '../../hooks/useValidate'
 import { Button } from '../../shared/Button'
-import { EmojiSelector } from './EmojiSelector'
+import { Form, FormItem } from '../../shared/Form'
 
 export const TagForm = defineComponent({
   props: {
@@ -27,54 +27,21 @@ export const TagForm = defineComponent({
       e.preventDefault()
     }
 
-    const borderColorClass = (errors?: string[]) => {
-      return (errors && errors.length) ? 'children:border-$error-color' : 'children:border-$input-border-color'
-    }
     return () => (
-      <form p="16px" onSubmit={onSubmit}>
-        <div mt="8px">
-          <label>
-            <span>标签名</span>
-            <div flex="~" mt="4px" class={[borderColorClass(errors.value.name)]}>
-              <input
-                min-h="$input-min-height"
-                max-w="full"
-                flex="grow"
-                border="1 rd-$input-radius"
-                text="18px"
-                p="x16px"
-                shadow="formInputInner"
-                v-model={formData.name}
-              ></input>
-            </div>
-            <div mt="4px" c="$error-color" text="12px" min-h="16px">
-              <span>{errors.value.name && errors.value.name[0]}</span>
-            </div>
-          </label>
-        </div>
-        <div mt="8px">
-          <label>
-            <span>符号 {formData.sign}</span>
-            <div flex="~" mt="4px" class={[borderColorClass(errors.value.sign)]}>
-              <EmojiSelector v-model={formData.sign} min-h="$input-min-height"
-                max-w="full" />
-            </div>
-            <div mt="4px" c="$error-color" text="12px" min-h="16px">
-              <span>{errors.value.sign && errors.value.sign[0]}</span>
-            </div>
-          </label>
-        </div>
-        <p text="center" p="y16px">
-          记账时长按标签即可进行编辑
-        </p>
-        <div mt="8px">
-          <div flex="~" mt="4px">
-            <Button min-h="$input-min-height" max-w="full" w="full">
-              {props.buttonText}
-            </Button>
-          </div>
-        </div>
-      </form>
+      <Form onSubmit={onSubmit}>
+        <FormItem label="标签名" type="text" v-model={formData.name} error={errors.value.name && errors.value.name[0]} />
+        <FormItem label={`符号 ${formData.sign}`} type='emojiSelect' v-model={formData.sign} error={errors.value.sign && errors.value.sign[0]} />
+        <FormItem>
+          <p text="center" p="y16px">
+            记账时长按标签即可进行编辑
+          </p>
+        </FormItem>
+        <FormItem>
+          <Button min-h="$input-min-height" >
+            {props.buttonText}
+          </Button>
+        </FormItem>
+      </Form>
     )
   },
 })

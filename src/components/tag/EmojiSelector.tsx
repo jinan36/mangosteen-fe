@@ -6,6 +6,7 @@ export const EmojiSelector = defineComponent({
   props: {
     modelValue: String as PropType<string>,
   },
+  emits: ['update:modelValue'],
   setup(props, { emit }) {
     let selectedGroup = $ref(allGroups[0][1])
     const emojis = $computed(() => {
@@ -17,7 +18,6 @@ export const EmojiSelector = defineComponent({
       emit('update:modelValue', emoji)
     }
     return () => <div
-      flex="grow"
       border="1 rd-$input-radius"
       text="20px"
       p="x1px"
@@ -25,13 +25,13 @@ export const EmojiSelector = defineComponent({
     >
       <nav flex="~ nowrap" overflow="auto" custom="scroll-hide" border="b-1 $emoji-nav-border-color">
         {allGroups.map((group) => {
-          const cls
-            = group[1] === selectedGroup
-              ? 'border-$emoji-nav-emoji-selected'
-              : 'border-transparent'
+          const navClass = $computed(() => group[1] === selectedGroup
+            ? 'border-$emoji-nav-emoji-selected'
+            : 'border-transparent',
+          )
           return (
             <span
-              class={cls}
+              class={navClass}
               flex="shrink-0"
               inline="block"
               p="8px"
