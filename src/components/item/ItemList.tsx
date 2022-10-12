@@ -2,7 +2,7 @@ import { defineComponent, reactive, watchEffect } from 'vue'
 import { MainLayout } from '../../layouts/MainLayout'
 import { Button } from '../../shared/Button'
 import { Form, FormItem } from '../../shared/Form'
-import { Icon } from '../../shared/Icon'
+import { OverlayIcon } from '../../shared/Overlay'
 import { Tab, Tabs } from '../../shared/Tabs'
 import { Time } from '../../shared/time'
 import { ItemSummary } from './ItemSummary'
@@ -39,7 +39,7 @@ export const ItemList = defineComponent({
     return () => <MainLayout>{
       {
         title: () => '山竹记账',
-        icon: () => <Icon w="30px" h="30px" name="menu" />,
+        icon: () => <OverlayIcon />,
         default: () => (
           <>
             <Tabs v-model:selected={selected} shrink={true} onUpdate:selected={(value: string) => {
@@ -59,7 +59,7 @@ export const ItemList = defineComponent({
                 <ItemSummary startDate={customTime.start.format()} endDate={customTime.end.format()} />
               </Tab>
             </Tabs>
-            <van-overlay show={overlayVisible} flex="~ center-center" border="~ color-red" bg="$overlay-mask-bg" >
+            <van-overlay show={overlayVisible} flex="~ center-center" bg="$overlay-mask-bg" >
               <div bg="$bg" w="80vw">
                 <header bg="$main-color" p="y12px x16px" c="$dialog-header-text">
                   请选择时间

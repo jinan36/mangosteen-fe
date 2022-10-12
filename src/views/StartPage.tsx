@@ -5,28 +5,15 @@ import { Button } from '../shared/Button'
 import { Center } from '../shared/Center'
 import { FloatButton } from '../shared/FloatButton'
 import { Icon } from '../shared/Icon'
-import { Overlay } from '../shared/Overlay'
+import { OverlayIcon } from '../shared/Overlay'
 
 export const StartPage = defineComponent({
   setup() {
-    let overlayVisible = $ref(false)
-    const onClickMenu = () => {
-      overlayVisible = !overlayVisible
-    }
     return () => (
       <MainLayout>
         {{
           title: () => '山竹记账',
-          icon: () => (
-            <Icon
-              w="30px"
-              h="30px"
-              relative="~"
-              top="2px"
-              name="menu"
-              onClick={onClickMenu}
-            ></Icon>
-          ),
+          icon: () => <OverlayIcon />,
           default: () => (
             <>
               <Center p-y-120px>
@@ -40,9 +27,6 @@ export const StartPage = defineComponent({
               <RouterLink to="/items/create">
                 <FloatButton iconName="add" />
               </RouterLink>
-              {overlayVisible && (
-                <Overlay onClose={() => (overlayVisible = false)}></Overlay>
-              )}
             </>
           ),
         }}

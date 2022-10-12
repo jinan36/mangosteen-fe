@@ -65,7 +65,7 @@ export const Overlay = defineComponent({
             <p>点击这里登录</p>
           </section>
           <nav>
-            <ul p="t16px" text="size-20px" m="svg:r12px">
+            <ul p="t16px" text="size-20px" m="svg:r12px" c="$text">
               <li>
                 {/* to="/statistics" */}
                 <OverlayAction to="#" iconName="charts">
@@ -89,5 +89,27 @@ export const Overlay = defineComponent({
         </div>
       </>
     )
+  },
+})
+
+export const OverlayIcon = defineComponent({
+  setup() {
+    let overlayVisible = $ref(false)
+    const onClickMenu = () => {
+      overlayVisible = !overlayVisible
+    }
+    return () => <>
+      <Icon
+        w="30px"
+        h="30px"
+        relative="~"
+        top="2px"
+        name="menu"
+        onClick={onClickMenu}
+      ></Icon>
+      {overlayVisible && (
+        <Overlay onClose={() => (overlayVisible = false)}></Overlay>
+      )}
+    </>
   },
 })
