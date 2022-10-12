@@ -172,7 +172,6 @@ export const InputPad = defineComponent({
               <van-popup position="bottom" v-model:show={popVisible}>
                 <van-datetime-picker
                   v-model={tempDate}
-
                   type="date"
                   title="请选择年月日"
                   onConfirm={setDate}
