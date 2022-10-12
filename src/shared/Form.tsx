@@ -98,17 +98,14 @@ export const FormItem = defineComponent({
           return (
             <EmojiSelector
               modelValue={(props.modelValue as string)}
-              {...{
-                'onUpdate:modelValue': (value: string) => emit('update:modelValue', value),
-              }}
+              onUpdate:modelValue={(value: string) => emit('update:modelValue', value)}
               min-h="$input-min-height" />
           )
         }
         case 'date': {
-          return <DatePicker modelValue={(props.modelValue as Time)}
-            {...{
-              'onUpdate:modelValue': (value: Time) => emit('update:modelValue', value),
-            }}
+          return <DatePicker
+            modelValue={(props.modelValue as Time)}
+            onUpdate:modelValue={(value: Time) => emit('update:modelValue', value)}
           />
         }
         default: {
