@@ -1,6 +1,6 @@
 import type { PropType } from 'vue'
 import { defineComponent } from 'vue'
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRouter } from 'vue-router'
 import type { IconNames } from './Icon'
 import { Icon } from './Icon'
 
@@ -29,10 +29,13 @@ export const Overlay = defineComponent({
     },
   },
   setup(props) {
+    const router = useRouter()
+
     const onClose = () => {
       props.onClose?.()
     }
     const onClickSignIn = () => {
+      router.push('/sign_in')
     }
     return () => (
       <>
@@ -68,7 +71,7 @@ export const Overlay = defineComponent({
             <ul p="t16px" text="size-20px" m="svg:r12px" c="$text">
               <li>
                 {/* to="/statistics" */}
-                <OverlayAction to="#" iconName="charts">
+                <OverlayAction to="/statistics" iconName="charts">
                   统计图表
                 </OverlayAction>
               </li>

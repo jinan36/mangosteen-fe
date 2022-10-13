@@ -1,4 +1,5 @@
 import { defineComponent, reactive } from 'vue'
+import { useRouter } from 'vue-router'
 import { useValidate } from '../hooks/useValidate'
 import { MainLayout } from '../layouts/MainLayout'
 import { Button } from '../shared/Button'
@@ -7,6 +8,8 @@ import { Icon } from '../shared/Icon'
 
 export const SignInPage = defineComponent({
   setup() {
+    const router = useRouter()
+
     const formData = reactive({
       email: '',
       code: '',
@@ -23,7 +26,7 @@ export const SignInPage = defineComponent({
     }
     return () => <MainLayout>
       {{
-        icon: () => <Icon name='left' />,
+        icon: () => <Icon name='left' onClick={() => router.back()} />,
         title: () => '登录',
         default: () => <div>
           <div flex="~ col center-center" p="t42px">
