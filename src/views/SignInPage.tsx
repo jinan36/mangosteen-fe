@@ -6,7 +6,7 @@ import { Form, FormItem } from '../shared/Form'
 import { Icon } from '../shared/Icon'
 
 export const SignInPage = defineComponent({
-  setup(props, context) {
+  setup() {
     const formData = reactive({
       email: '',
       code: '',

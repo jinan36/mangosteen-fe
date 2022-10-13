@@ -124,7 +124,7 @@ export const FormItem = defineComponent({
                 onInput={(e: Event) => emit('update:modelValue', (e.target as HTMLInputElement).value)}
                 placeholder={props.placeholder}
               ></input>
-              <Button m="l16px" flex="grow">发送验证码</Button>
+              <Button attrType="button" m="l16px" flex="grow">发送验证码</Button>
             </div>
           )
         }
