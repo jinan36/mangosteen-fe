@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { ref, unref } from 'vue'
 
 interface FData {
   [k: string]: string | number | null | undefined | FData
@@ -27,7 +27,7 @@ export const useValidate = <T extends FData>(formData: T, rules: Rules<T>) => {
     errors.value = {}
     rules.forEach((rule) => {
       const { key, message, type } = rule
-      const value = formData[key]
+      const value = unref(formData)[key]
       switch (type) {
         case 'required':
           if (isEmpty(value)) {
