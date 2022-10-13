@@ -33,8 +33,8 @@ const ListItemDetail = defineComponent({
 
 export const ItemSummary = defineComponent({
   props: {
-    startDate: String as PropType<string>,
-    endDate: String as PropType<string>,
+    startDate: String,
+    endDate: String,
   },
   setup() {
     return () => <div class="wrapper">
