@@ -1,6 +1,7 @@
 import type { PropType } from 'vue'
 import { defineComponent } from 'vue'
 import { EmojiSelector } from '../components/tag/EmojiSelector'
+import { Button } from './Button'
 import { Time } from './time'
 
 export const Form = defineComponent({
@@ -67,16 +68,19 @@ export const FormItem = defineComponent({
       type: [String, Number, Object] as PropType<string | number | Time>,
     },
     type: {
-      type: String as PropType<'text' | 'emojiSelect' | 'date'>,
+      type: String as PropType<'text' | 'emojiSelect' | 'validationCode' | 'date'>,
     },
     error: {
+      type: String,
+    },
+    placeholder: {
       type: String,
     },
   },
   emits: ['update:modelValue'],
   setup(props, { slots, emit }) {
     const blockClass = $computed(() => {
-      return props.error ? 'children:border-$error-color' : 'children:border-$input-border-color'
+      return props.error ? 'border-$error-color' : 'border-$input-border-color'
     })
 
     const content = $computed(() => {
@@ -89,17 +93,39 @@ export const FormItem = defineComponent({
               text="18px"
               p="x16px"
               shadow="formInputInner"
+              class={blockClass}
               value={props.modelValue}
               onInput={(e: Event) => emit('update:modelValue', (e.target as HTMLInputElement).value)}
+              placeholder={props.placeholder}
             ></input>
           )
         }
         case 'emojiSelect': {
           return (
             <EmojiSelector
+              class={blockClass}
               modelValue={(props.modelValue as string)}
               onUpdate:modelValue={(value: string) => emit('update:modelValue', value)}
               min-h="$input-min-height" />
+          )
+        }
+        case 'validationCode': {
+          return (
+            <div flex="~">
+              <input
+                w="9em"
+                min-h="$input-min-height"
+                border="1 rd-$input-radius"
+                text="18px"
+                p="x16px"
+                shadow="formInputInner"
+                class={blockClass}
+                value={props.modelValue}
+                onInput={(e: Event) => emit('update:modelValue', (e.target as HTMLInputElement).value)}
+                placeholder={props.placeholder}
+              ></input>
+              <Button m="l16px" flex="grow">发送验证码</Button>
+            </div>
           )
         }
         case 'date': {
