@@ -38,7 +38,7 @@ export default defineConfig(({ mode }) => {
               [, name],
               { rawSelector },
             ) => {
-            // discard mismatched rules
+              // discard mismatched rules
               if (!name.includes('scroll-hide'))
                 return
 
