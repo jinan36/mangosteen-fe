@@ -2,6 +2,7 @@ import type { PropType } from 'vue'
 import { defineComponent } from 'vue'
 
 export const Tab = defineComponent({
+  name: 'Tab',
   props: {
     name: { type: String as PropType<string>, required: true },
   },
@@ -11,6 +12,7 @@ export const Tab = defineComponent({
 })
 
 export const Tabs = defineComponent({
+  name: 'Tabs',
   props: {
     selected: {
       type: String as PropType<string>,

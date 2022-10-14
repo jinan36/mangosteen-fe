@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue'
 
 export const Charts = defineComponent({
-  setup(props, context) {
+  setup() {
     return () => <div>图表</div>
   },
 })

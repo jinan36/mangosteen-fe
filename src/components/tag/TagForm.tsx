@@ -5,6 +5,7 @@ import { Button } from '../../shared/Button'
 import { Form, FormItem } from '../../shared/Form'
 
 export const TagForm = defineComponent({
+  name: 'TagForm',
   props: {
     buttonText: {
       type: String,

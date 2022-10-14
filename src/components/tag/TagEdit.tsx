@@ -6,6 +6,7 @@ import { Icon } from '../../shared/Icon'
 import { TagForm } from './TagForm'
 
 export const TagEdit = defineComponent({
+  name: 'TagEdit',
   setup() {
     const router = useRouter()
 

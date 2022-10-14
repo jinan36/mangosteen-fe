@@ -3,6 +3,7 @@ import { defineComponent } from 'vue'
 import { Actions } from './Actions'
 
 export const FirstActions = defineComponent({
+  name: 'FirstActions',
   setup() {
     return () => (
       <Actions>

@@ -1,6 +1,7 @@
 import { defineComponent } from 'vue'
 
 export const Card = defineComponent({
+  name: 'Card',
   setup(_, { slots }) {
     return () => (
       <div

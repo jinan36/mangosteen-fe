@@ -4,6 +4,7 @@ import { Icon } from './Icon'
 import type { IconNames } from './Icon'
 
 export const FloatButton = defineComponent({
+  name: 'FloatButton',
   props: {
     iconName: {
       type: String as PropType<IconNames>,

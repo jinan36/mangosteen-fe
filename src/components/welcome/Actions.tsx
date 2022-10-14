@@ -1,6 +1,7 @@
 import { defineComponent } from 'vue'
 
 export const Actions = defineComponent({
+  name: 'Actions',
   setup(_, { slots }) {
     return () => (
       <div

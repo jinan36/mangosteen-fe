@@ -3,6 +3,7 @@ import { defineComponent } from 'vue'
 import { allGroups, emojiList } from '../../assets/emoji/database'
 
 export const EmojiSelector = defineComponent({
+  name: 'EmojiSelector',
   props: {
     modelValue: String as PropType<string>,
   },
@@ -16,6 +17,7 @@ export const EmojiSelector = defineComponent({
 
     const onClickEmoji = (emoji: string) => {
       emit('update:modelValue', emoji)
+      emit('1')
     }
     return () => <div
       border="1 rd-$input-radius"

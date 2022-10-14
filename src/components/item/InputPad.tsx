@@ -4,6 +4,7 @@ import { Time } from '../../shared/time'
 import { useInputPad } from '../../hooks/useInputPad'
 
 const NoteAndAmount = defineComponent({
+  name: 'NoteAndAmount',
   setup(props, { slots }) {
     return () => <div flex="~ between-center" p="16px"
     font="mono"
@@ -12,12 +13,14 @@ const NoteAndAmount = defineComponent({
 })
 
 const Actions = defineComponent({
+  name: 'Actions',
   setup(props, { slots }) {
     return () => <div flex="~ between-center" p="x16px b16px t4px" font="mono" bg="$overlay-bg">{slots.default?.()}</div>
   },
 })
 
 const ButtonsWrapper = defineComponent({
+  name: 'ButtonsWrapper',
   setup(props, { slots }) {
     return () => <div grid="~ cols-4"
     auto="rows-48px cols-fr"
@@ -28,6 +31,7 @@ const ButtonsWrapper = defineComponent({
 })
 
 export const InputPad = defineComponent({
+  name: 'InputPad',
   setup() {
     const _now = new Date()
     let now = $ref(_now)

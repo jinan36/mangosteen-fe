@@ -7,6 +7,7 @@ import { Tab, Tabs } from '../../shared/Tabs'
 import { InputPad } from './InputPad'
 
 const Tag = defineComponent({
+  name: 'Tag',
   props: {
     text: String as PropType<string>,
     selected: Boolean as PropType<boolean>,
@@ -27,6 +28,7 @@ const Tag = defineComponent({
 })
 
 export const ItemCreate = defineComponent({
+  name: 'ItemCreate',
   setup() {
     const router = useRouter()
     const kind = $ref('支出')

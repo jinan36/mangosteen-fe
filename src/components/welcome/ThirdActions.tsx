@@ -3,6 +3,7 @@ import { defineComponent } from 'vue'
 import { Actions } from './Actions'
 
 export const ThirdActions = defineComponent({
+  name: 'ThirdActions',
   setup() {
     return () => (
       <Actions>

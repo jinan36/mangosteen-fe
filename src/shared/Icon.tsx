@@ -18,6 +18,7 @@ export type IconNames =
   | 'brush'
 
 export const Icon = defineComponent({
+  name: 'Icon',
   props: {
     name: { type: String as PropType<IconNames>, required: true },
   },

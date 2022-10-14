@@ -2,6 +2,7 @@ import { defineComponent } from 'vue'
 import { Navbar } from '../shared/Navbar'
 
 export const MainLayout = defineComponent({
+  name: 'MainLayout',
   setup(_, { slots }) {
     return () => (
       <div relative="~">

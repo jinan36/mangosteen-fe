@@ -3,6 +3,7 @@ import { defineComponent } from 'vue'
 import { FloatButton } from '../../shared/FloatButton'
 
 const TotalItem = defineComponent({
+  name: 'TotalItem',
   props: {
     title: String as PropType<string>,
   },
@@ -12,12 +13,14 @@ const TotalItem = defineComponent({
 })
 
 const ListItem = defineComponent({
+  name: 'ListItem',
   setup(props, { slots }) {
     return () => <li flex="~ between-start" border="b color-$button-border-color" p="y12px x16px">{slots.default?.()}</li>
   },
 })
 
 const ListItemTag = defineComponent({
+  name: 'ListItemTag',
   setup(_, { slots }) {
     return () => <div flex="~ center-center grow-0 shrink-0" w="48px" h="48px" rd="1/2" bg="$tag-bg" m="x8px">
       {slots.default?.()}
@@ -26,12 +29,14 @@ const ListItemTag = defineComponent({
 })
 
 const ListItemDetail = defineComponent({
+  name: 'ListItemDetail',
   setup(_, { slots }) {
     return () => <div flex="grow shrink" mx="4px">{slots.default?.()}</div>
   },
 })
 
 export const ItemSummary = defineComponent({
+  name: 'ItemSummary',
   props: {
     startDate: String,
     endDate: String,

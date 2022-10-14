@@ -9,6 +9,7 @@ const directionMap = {
 }
 
 export const Center = defineComponent({
+  name: 'CenterLayout',
   props: {
     direction: {
       type: String as PropType<'-' | '|' | 'horizontal' | 'vertical'>,

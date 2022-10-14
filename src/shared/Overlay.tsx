@@ -96,6 +96,7 @@ export const Overlay = defineComponent({
 })
 
 export const OverlayIcon = defineComponent({
+  name: 'OverlayIcon',
   setup() {
     let overlayVisible = $ref(false)
     const onClickMenu = () => {

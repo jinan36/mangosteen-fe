@@ -22,6 +22,7 @@ const backMap: Record<string, string> = {
 }
 
 export const Welcome = defineComponent({
+  name: 'Welcome',
   setup() {
     let enterFromClass = $ref(s.slideFadeForwardEnterFrom)
     let leaveToClass = $ref(s.slideFadeForwardLeaveTo)

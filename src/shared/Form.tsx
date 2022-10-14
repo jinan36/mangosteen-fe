@@ -5,6 +5,7 @@ import { Button } from './Button'
 import { Time } from './time'
 
 export const Form = defineComponent({
+  name: 'BasicForm',
   props: {
     onSubmit: {
       type: Function as PropType<(e: Event) => void>,
@@ -20,6 +21,7 @@ export const Form = defineComponent({
 })
 
 const DatePicker = defineComponent({
+  name: 'DatePicker',
   props: {
     modelValue: { type: Time, required: true },
   },
@@ -60,6 +62,7 @@ const DatePicker = defineComponent({
 })
 
 export const FormItem = defineComponent({
+  name: 'FormItem',
   props: {
     label: {
       type: String,

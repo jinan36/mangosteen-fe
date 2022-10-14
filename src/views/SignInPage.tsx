@@ -7,6 +7,7 @@ import { Form, FormItem } from '../shared/Form'
 import { Icon } from '../shared/Icon'
 
 export const SignInPage = defineComponent({
+  name: 'SignInPage',
   setup() {
     const router = useRouter()
 

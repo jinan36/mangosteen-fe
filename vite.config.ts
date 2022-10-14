@@ -20,6 +20,7 @@ export default defineConfig(({ mode }) => {
       vue({
         reactivityTransform: true,
       }),
+      vueJsx(),
       Components({
         types: [],
         dirs: [],
@@ -27,7 +28,6 @@ export default defineConfig(({ mode }) => {
         resolvers: [VantResolver()],
         include: [/\.vue$/, /\.vue\?vue/, /\.tsx$/, /\.tsx\?tsx/],
       }),
-      vueJsx({}),
       Unocss({
         presets: [presetUno(), presetAttributify()],
         transformers: [transformerAttributifyJsx()],

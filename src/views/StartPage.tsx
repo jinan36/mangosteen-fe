@@ -8,6 +8,7 @@ import { Icon } from '../shared/Icon'
 import { OverlayIcon } from '../shared/Overlay'
 
 export const StartPage = defineComponent({
+  name: 'StartPage',
   setup() {
     return () => (
       <MainLayout>

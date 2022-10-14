@@ -1,6 +1,7 @@
 import { defineComponent } from 'vue'
 
 export const Navbar = defineComponent({
+  name: 'Navbar',
   setup(_, { slots }) {
     return () => (
       <div

@@ -2,6 +2,7 @@ import { defineComponent } from 'vue'
 import { Card } from './Card'
 
 export const Fourth = defineComponent({
+  name: 'Fourth',
   setup() {
     return () => (
       <Card>

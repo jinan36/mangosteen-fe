@@ -2,6 +2,7 @@ import type { PropType } from 'vue'
 import { defineComponent } from 'vue'
 
 export const Button = defineComponent({
+  name: 'BasicButton',
   props: {
     level: {
       type: String as PropType<'important' | 'normal' | 'danger'>,
