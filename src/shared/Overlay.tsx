@@ -1,6 +1,7 @@
 import type { PropType } from 'vue'
 import { defineComponent } from 'vue'
 import { RouterLink, useRouter } from 'vue-router'
+import { $ref } from 'vue/macros'
 import type { IconNames } from './Icon'
 import { Icon } from './Icon'
 

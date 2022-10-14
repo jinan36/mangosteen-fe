@@ -1,4 +1,5 @@
 import NP from 'number-precision'
+import { $$, $computed, $ref } from 'vue/macros'
 
 export const useInputPad = () => {
   let amount = $ref('0.0')

@@ -1,5 +1,6 @@
 import type { PropType } from 'vue'
 import { defineComponent } from 'vue'
+import { $computed } from 'vue/macros'
 
 const directionMap = {
   '-': 'horizontal',

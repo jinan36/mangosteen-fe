@@ -8,6 +8,7 @@ import {
   useRouter,
 } from 'vue-router'
 import { useSwipe } from '@vueuse/core'
+import { $ref } from 'vue/macros'
 import s from './Welcome.module.css'
 
 const forwardMap: Record<string, string> = {

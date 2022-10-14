@@ -1,5 +1,6 @@
 import type { PropType } from 'vue'
 import { defineComponent, reactive } from 'vue'
+import { $ref } from 'vue/macros'
 import { Button } from '../shared/Button'
 import { Form, FormItem } from '../shared/Form'
 import { OverlayIcon } from '../shared/Overlay'

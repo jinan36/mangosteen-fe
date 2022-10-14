@@ -1,5 +1,6 @@
 import type { PropType } from 'vue'
 import { defineComponent } from 'vue'
+import { $computed, $ref } from 'vue/macros'
 import { allGroups, emojiList } from '../../assets/emoji/database'
 
 export const EmojiSelector = defineComponent({

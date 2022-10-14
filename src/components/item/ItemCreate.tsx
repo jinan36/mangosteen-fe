@@ -1,6 +1,7 @@
 import type { PropType } from 'vue'
 import { defineComponent } from 'vue'
 import { useRouter } from 'vue-router'
+import { $computed, $ref } from 'vue/macros'
 import { MainLayout } from '../../layouts/MainLayout'
 import { Icon } from '../../shared/Icon'
 import { Tab, Tabs } from '../../shared/Tabs'

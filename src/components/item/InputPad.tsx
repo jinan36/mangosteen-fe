@@ -1,4 +1,5 @@
 import { defineComponent } from 'vue'
+import { $ref } from 'vue/macros'
 import { Icon } from '../../shared/Icon'
 import { Time } from '../../shared/time'
 import { useInputPad } from '../../hooks/useInputPad'
