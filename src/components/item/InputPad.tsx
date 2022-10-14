@@ -8,8 +8,8 @@ const NoteAndAmount = defineComponent({
   name: 'NoteAndAmount',
   setup(props, { slots }) {
     return () => <div flex="~ between-center" p="16px"
-    font="mono"
-    bg="$overlay-bg">{slots.default?.()}</div>
+      font="mono"
+      bg="$overlay-bg">{slots.default?.()}</div>
   },
 })
 
@@ -24,10 +24,10 @@ const ButtonsWrapper = defineComponent({
   name: 'ButtonsWrapper',
   setup(props, { slots }) {
     return () => <div grid="~ cols-4"
-    auto="rows-48px cols-fr"
-    gap="1px"
-    border="t-1 $input-pad-button-border-color"
-    bg="$input-pad-button-border-color">{slots.default?.()}</div>
+      auto="rows-48px cols-fr"
+      gap="1px"
+      border="t-1 $input-pad-button-border-color"
+      bg="$input-pad-button-border-color">{slots.default?.()}</div>
   },
 })
 
