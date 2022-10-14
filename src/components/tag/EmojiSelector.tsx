@@ -17,7 +17,6 @@ export const EmojiSelector = defineComponent({
 
     const onClickEmoji = (emoji: string) => {
       emit('update:modelValue', emoji)
-      emit('1')
     }
     return () => <div
       border="1 rd-$input-radius"
