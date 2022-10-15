@@ -6,7 +6,6 @@ import {
   toEscapedSelector as e,
   presetAttributify,
   presetUno,
-  transformerAttributifyJsx,
 } from 'unocss'
 import Components from 'unplugin-vue-components/vite'
 import { VantResolver } from 'unplugin-vue-components/resolvers'
@@ -30,7 +29,6 @@ export default defineConfig(({ mode }) => {
       }),
       Unocss({
         presets: [presetUno(), presetAttributify()],
-        transformers: [transformerAttributifyJsx()],
         rules: [
           [
             /^custom-(.+)$/,

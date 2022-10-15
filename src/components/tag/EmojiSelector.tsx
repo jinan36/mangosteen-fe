@@ -20,6 +20,7 @@ export const EmojiSelector = defineComponent({
       emit('update:modelValue', emoji)
     }
     return () => <div
+      class="border-color-$input-border-color"
       border="1 rd-$input-radius"
       text="20px"
       p="x1px"

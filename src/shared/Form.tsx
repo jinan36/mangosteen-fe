@@ -72,7 +72,7 @@ export const FormItem = defineComponent({
       type: [String, Number, Object] as PropType<string | number | Time>,
     },
     type: {
-      type: String as PropType<'text' | 'emojiSelect' | 'validationCode' | 'date'>,
+      type: String as PropType<'text' | 'emojiSelect' | 'validationCode' | 'date' | 'select'>,
     },
     error: {
       type: String,
@@ -80,11 +80,14 @@ export const FormItem = defineComponent({
     placeholder: {
       type: String,
     },
+    options: {
+      type: Array as PropType<{ value: string | number; label: string }[]>,
+    },
   },
   emits: ['update:modelValue'],
   setup(props, { slots, emit }) {
     const blockClass = $computed(() => {
-      return props.error ? 'border-$error-color' : 'border-$input-border-color'
+      return props.error ? 'border-color-$error-color!' : 'border-color-$input-border-color'
     })
 
     const content = $computed(() => {
@@ -138,6 +141,17 @@ export const FormItem = defineComponent({
             onUpdate:modelValue={(value: Time) => emit('update:modelValue', value)}
           />
         }
+        case 'select': {
+          return <select
+            min-h="$input-min-height"
+            border="1 rd-$input-radius"
+            p="x8px"
+            class={blockClass}
+            value={props.modelValue}
+            onChange={(e: Event) => { emit('update:modelValue', (e.target as HTMLSelectElement).value) }}>
+            {props.options?.map(option => <option value={option.value}>{option.label}</option>)}
+          </select >
+        }
         default: {
           return slots.default?.()
         }
@@ -148,7 +162,7 @@ export const FormItem = defineComponent({
       <div mt="8px">
         <label>
           <span>{props.label}</span>
-          <div flex="~ col" mt="4px" class={blockClass}>
+          <div flex="~ col" mt="4px">
             {content}
           </div>
           <div mt="4px" c="$error-color" text="12px" min-h="16px">

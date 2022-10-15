@@ -16,6 +16,7 @@ const typeComponent = defineComponent({
 })
 
 export const TimeTabsLayout = defineComponent({
+  name: 'TimeTabsLayout',
   props: {
     component: {
       type: Object as PropType<typeof typeComponent>,
