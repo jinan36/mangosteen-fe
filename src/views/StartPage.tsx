@@ -17,7 +17,7 @@ export const StartPage = defineComponent({
           icon: () => <OverlayIcon />,
           default: () => (
             <>
-              <Center p-y-120px>
+              <Center p="y120px">
                 <Icon name="pig" w="128px" h="128px" />
               </Center>
               <div p="16px">
