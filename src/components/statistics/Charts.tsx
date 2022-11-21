@@ -1,7 +1,7 @@
 import { defineComponent, onMounted, ref } from 'vue'
 import { $ref } from 'vue/macros'
 import * as echarts from 'echarts'
-import { Form, FormItem } from '../../shared/Form'
+import { FormItem } from '../../shared/Form'
 
 export const Charts = defineComponent({
   name: 'Charts',
