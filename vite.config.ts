@@ -51,6 +51,14 @@ export default defineConfig(({ mode }) => {
               `
             },
           ],
+          [/^nth\-(\d+)\:(.*)$/, async ([, d, r], { rawSelector, constructCSS, generator }) => {
+            const rule = await (generator.parseToken(r))
+            if (!rule)
+              return
+            console.log(rule[0][2], 'rule-------------------')
+
+            return `${e(rawSelector)} > *:nth-child(${d}) { ${rule[0][2]} }`
+          }],
         ],
         shortcuts: [
           [

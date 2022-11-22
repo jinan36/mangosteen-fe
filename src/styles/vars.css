@@ -6,6 +6,7 @@
   --button-border-color: #ddd;
   --bg: white;
   --text: #333333;
+  --text-muted: #666;
   --app-name-text: #7878FF;
 
   /* welcome */
@@ -69,4 +70,7 @@
 
   /* dialog */
   --dialog-header-text: white;
+
+  /* Charts.tsx */
+  --bar-bg: #CCCCCC;
 }
