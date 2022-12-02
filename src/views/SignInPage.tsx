@@ -1,4 +1,4 @@
-import { defineComponent, reactive } from 'vue'
+import { defineComponent, reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
 import { useValidate } from '../hooks/useValidate'
@@ -28,8 +28,13 @@ export const SignInPage = defineComponent({
       validate()
     }
 
+    const refValidationCode = ref<any>(null)
     const onClickSendValidationCode = async () => {
-      // const response = await axios.post('/api/v1/validation_codes', { email: formData.email })
+      const response = await axios.post('/api/v1/validation_codes', { email: formData.email }).catch((error) => {
+        throw error
+      })
+      if (refValidationCode.value)
+        refValidationCode.value?.startCountdown()
     }
     return () => <MainLayout>
       {{
@@ -42,7 +47,7 @@ export const SignInPage = defineComponent({
           </div>
           <Form onSubmit={onSubmit}>
             <FormItem label="邮箱地址" type="text" v-model={formData.email} error={errors.value.email?.[0]} placeholder="请输入邮箱，然后点击发送验证码"></FormItem>
-            <FormItem label="验证码" type="validationCode" v-model={formData.code} error={errors.value.code?.[0]} placeholder="请输入六位数字" onClick={onClickSendValidationCode}></FormItem>
+            <FormItem ref={refValidationCode} label="验证码" type="validationCode" v-model={formData.code} error={errors.value.code?.[0]} placeholder="请输入六位数字" onClick={onClickSendValidationCode}></FormItem>
             <FormItem p='t16px'>
               <Button>登录</Button>
             </FormItem>
