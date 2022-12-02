@@ -86,12 +86,33 @@ export const FormItem = defineComponent({
     onClick: {
       type: Function as PropType<() => void>,
     },
+    countFrom: {
+      type: Number,
+      default: 60,
+    },
   },
   emits: ['update:modelValue'],
   setup(props, { slots, emit }) {
     const blockClass = $computed(() => {
       return props.error ? 'border-color-$error-color!' : 'border-color-$input-border-color'
     })
+
+    let timer = $ref<ReturnType<typeof setInterval>>()
+    let count = $ref(props.countFrom)
+    const isCounting = $computed(() => !!timer)
+    const onClickSendValidationCode = () => {
+      if (timer)
+        return
+      props.onClick?.()
+      timer = setInterval(() => {
+        count -= 1
+        if (count === 0) {
+          clearInterval(timer)
+          timer = undefined
+          count = props.countFrom
+        }
+      }, 1000)
+    }
 
     const content = $computed(() => {
       switch (props.type) {
@@ -134,7 +155,9 @@ export const FormItem = defineComponent({
                 onInput={(e: Event) => emit('update:modelValue', (e.target as HTMLInputElement).value)}
                 placeholder={props.placeholder}
               ></input>
-              <Button m="l16px" flex="grow" onClick={props.onClick}>发送验证码</Button>
+              <Button m="l16px" flex="grow" onClick={onClickSendValidationCode} disabled={isCounting}>{
+                isCounting ? `${count}s` : '发送验证码'
+              }</Button>
             </div>
           )
         }

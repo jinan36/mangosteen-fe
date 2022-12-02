@@ -28,6 +28,8 @@ export const Button = defineComponent({
         text="size-$button-font-size"
         h="$button-height"
         type={props.attrType}
+        opacity="disabled:50"
+        cursor="disabled:not-allowed"
       >
         {slots.default?.()}
       </button>
