@@ -15,6 +15,11 @@ import svgstore from './src/plugins/vite/svgstore'
 export default defineConfig(({ mode }) => {
   const isDevelopment = mode === 'development'
   return {
+    server: {
+      proxy: {
+        '/api/v1': { target: 'http://43.138.202.91:3000', changeOrigin: true },
+      },
+    },
     plugins: [
       vue({
         reactivityTransform: true,

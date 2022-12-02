@@ -10,6 +10,7 @@ export const Button = defineComponent({
     },
     attrType: {
       type: String as PropType<'submit' | 'reset' | 'button'>,
+      default: 'button',
     },
   },
   setup(props, { slots }) {
