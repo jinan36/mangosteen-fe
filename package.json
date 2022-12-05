@@ -10,11 +10,12 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@vant/compat": "^1.0.0",
     "@vueuse/core": "9.5.0",
     "axios": "1.2.0",
     "echarts": "5.4.0",
     "number-precision": "1.6.0",
-    "vant": "3.6.5",
+    "vant": "^4.0.0",
     "vue": "3.2.45",
     "vue-router": "4.1.6"
   },

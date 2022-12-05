@@ -28,7 +28,7 @@ const DatePicker = defineComponent({
   },
   setup(props, { emit }) {
     let datePickerVisible = $ref(false)
-    let tempDate = $ref(props.modelValue.getRaw())
+    let tempDate = $ref(props.modelValue.getStrArr())
 
     return () => (<>
       <input
@@ -40,16 +40,16 @@ const DatePicker = defineComponent({
         readonly={true}
         value={props.modelValue.format()}
         onClick={() => {
-          tempDate = props.modelValue.getRaw()
+          tempDate = props.modelValue.getStrArr()
           datePickerVisible = true
         }}
       />
       <van-popup position="bottom" v-model:show={datePickerVisible} teleport="body">
-        <van-datetime-picker
+        <van-date-picker
           v-model={tempDate}
-          type="date"
           title="请选择年月日"
-          onConfirm={(date: Date) => {
+          onConfirm={({ selectedValues }: { selectedValues: string[] }) => {
+            const date = new Date(`${selectedValues[0]}-${selectedValues[1]}-${selectedValues[2]}T00:00:00`)
             emit('update:modelValue', new Time(date))
             datePickerVisible = false
           }}

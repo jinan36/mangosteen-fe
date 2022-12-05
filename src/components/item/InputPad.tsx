@@ -1,8 +1,8 @@
 import { defineComponent } from 'vue'
 import { $ref } from 'vue/macros'
 import { Icon } from '../../shared/Icon'
-import { Time } from '../../shared/time'
 import { useInputPad } from '../../hooks/useInputPad'
+import { Time } from '../../shared/time'
 
 const NoteAndAmount = defineComponent({
   name: 'NoteAndAmount',
@@ -34,9 +34,10 @@ const ButtonsWrapper = defineComponent({
 export const InputPad = defineComponent({
   name: 'InputPad',
   setup() {
-    const _now = new Date()
-    let now = $ref(_now)
-    let tempDate = $ref(_now)
+    const _now = new Time()
+    const dateStrArr = _now.getStrArr()
+    let now = $ref(dateStrArr)
+    let tempDate = $ref(dateStrArr)
     let popVisible = $ref(false)
     const showDatePicker = () => {
       tempDate = now
@@ -173,11 +174,10 @@ export const InputPad = defineComponent({
               name="date"
             />
             <span>
-              <span onClick={showDatePicker}>{new Time(now).format()}</span>
+              <span onClick={showDatePicker}>{`${now[0]}-${now[1]}-${now[2]}`}</span>
               <van-popup position="bottom" v-model:show={popVisible}>
-                <van-datetime-picker
+                <van-date-picker
                   v-model={tempDate}
-                  type="date"
                   title="请选择年月日"
                   onConfirm={setDate}
                   onCancel={hideDatePicker}

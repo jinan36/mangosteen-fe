@@ -43,6 +43,10 @@ export class Time {
     return this.date
   }
 
+  getStrArr() {
+    return [`${this.date.getFullYear()}`, `${this.date.getMonth() + 1}`, `${this.date.getDate() >= 10 ? this.date.getDate() : `0${this.date.getDate()}`}`]
+  }
+
   add(amount: number, unit: 'year' | 'month' | 'day' | 'hour' | 'minute' | 'second' | 'millisecond') {
     const date = new Date(this.date.getTime())
     switch (unit) {

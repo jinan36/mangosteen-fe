@@ -7,7 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    VanDatetimePicker: typeof import('vant/es')['DatetimePicker']
+    VanDatePicker: typeof import('vant/es')['DatePicker']
     VanOverlay: typeof import('vant/es')['Overlay']
     VanPopup: typeof import('vant/es')['Popup']
   }
